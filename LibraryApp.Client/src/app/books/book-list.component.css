@@ -1,0 +1,14 @@
+thead {
+    color: purple;
+}
+button {
+    background-color: pink;
+    color: purple;
+    border-color: fuchsia;
+
+}
+button:hover {
+    background-color: plum;
+    border-color: fuchsia;
+    color: purple;
+}

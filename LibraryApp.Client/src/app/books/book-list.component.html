@@ -1,0 +1,64 @@
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' 
+                 [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <h4>Filtered by: {{listFilter}}</h4>
+            </div>
+        </div>
+
+        <div class='table'
+            *ngIf='books && books.length'>
+            <thead>
+                <tr>
+                    <th>
+                        <button class='btn btn-primary'
+                        (click)='toggleImage()'>
+                         {{showImage ? 'Hide' : 'Show'}} Image
+                        </button>
+                    </th>
+                    <th>Original Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Publishing House</th>
+                    <th>Pages</th>
+                    <th>5 Star Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let book of filteredBooks'>
+                    <td>
+                        <img *ngIf='showImage' 
+                        [src]='book.imageUrl'
+                        [title]='book.originalTitle'
+                        [style.width.px]='imageWidth'
+                        [style.margin.px]='imageMargin'>
+                    </td>
+                    <td><a [routerLink]="['/books', book.bookId]">
+                        {{ book.originalTitle }}
+                    </a>
+                    </td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.genre }}</td>
+                    <td>{{ book.publishingHouse }}</td>
+                    <td>{{ book.pages }}</td>
+                    <td>
+                    <app-star [rating]='book.starRating'
+                    (ratingClicked)='onRatingClicked($event)'></app-star>
+                    </td>
+
+                </tr>
+            </tbody>
+        </div>
+    </div>
+
+</div>
