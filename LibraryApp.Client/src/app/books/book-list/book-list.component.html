@@ -43,16 +43,16 @@
                         [style.width.px]='imageWidth'
                         [style.margin.px]='imageMargin'>
                     </td>
-                    <td><a [routerLink]="['/books', book.bookId]">
+                    <td><a [routerLink]="['/books', book.id]">
                         {{ book.originalTitle }}
                     </a>
                     </td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.genre }}</td>
                     <td>{{ book.publishingHouse }}</td>
-                    <td>{{ book.pages }}</td>
+                    <td>{{ book.pagesNum }}</td>
                     <td>
-                    <app-star [rating]='book.starRating'
+                    <app-star [rating]='book.rating'
                     (ratingClicked)='onRatingClicked($event)'></app-star>
                     </td>
 

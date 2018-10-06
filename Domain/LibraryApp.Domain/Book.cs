@@ -11,7 +11,7 @@ namespace LibraryApp.Domain
         public string Genre { get; set; }
         public string PublishingHouse { get; set; }
         public int PagesNum { get; set; }
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         public string ImageUrl { get; set; }
     }
 }

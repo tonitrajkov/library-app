@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BookListComponent } from 'src/app/books/book-list.component';
-import { BookDetailComponent } from 'src/app/books/book-detail.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 import { RouterModule } from '@angular/router';
-import { BookDetailGuard } from 'src/app/books/book-detail.guard';
+import { BookDetailGuard } from './book-detail/book-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
