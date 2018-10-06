@@ -14,6 +14,7 @@ pageTitle: string = 'Book List';
 imageWidth: number = 80;
 imageMargin: number = 2;
 showImage: boolean = true;
+errorMessage: string;
 
 _listFilter: string;
 get listFilter(): string {
@@ -21,7 +22,7 @@ get listFilter(): string {
 }
 set listFilter(value:string) {
     this._listFilter = value;
-    this.filteredBooks= this._listFilter ? this.performFilter(this.listFilter) : this.books;
+    this.filteredBooks = this._listFilter ? this.performFilter(this.listFilter) : this.books;
 }
 
 filteredBooks: IBook[];
@@ -46,7 +47,12 @@ toggleImage(): void {
 }
 
 ngOnInit(): void {
-    this.books = this.bookService.getBooks();
-    this.filteredBooks = this.books;
+    this.bookService.getBooks().subscribe(
+        books => {
+            this.books = books,
+            this.filteredBooks = this.books;
+        },           
+        error => this.errorMessage = <any>error
+    );
 }
 }
