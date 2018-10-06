@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\LibraryApp.Domain\LibraryApp.Domain.csproj" />
+    <ProjectReference Include="..\..\Models\LibraryApp.Models\LibraryApp.Models.csproj" />
+    <ProjectReference Include="..\LibraryApp.Services.Interfaces\LibraryApp.Services.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
