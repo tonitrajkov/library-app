@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IBook } from 'src/app/books/book';
 import { Router } from '@angular/router';
+
+import { BookService } from "src/app/books/book.service";
+import { IBook } from 'src/app/books/book';
 
 @Component({
   templateUrl: './book-detail.component.html',
@@ -11,26 +13,24 @@ export class BookDetailComponent implements OnInit {
   pageTitle: string = 'Book Detail';
   book: IBook
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookService: BookService
+  ) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
-    this.book = {
-      'bookId': id,
-      'originalTitle': 'The Nightingale',
-      'author': 'Kristin Hannah',
-      'genre': 'drama',
-      'publishingHouse': 'Sakam Knigi',
-      'pages': 415,
-      'starRating': 4.56,
-      'imageUrl': 'http://sakamknigi.mk/wp-content/uploads/2015/09/11.jpg'
-    }
+
+    this.bookService.getBooks()
+      .subscribe(books => {
+        this.book = books.filter((book: IBook) =>
+          book.bookId == parseInt(id))[0];
+      });
   }
 
   onBack(): void {
     this.router.navigate(['/books']);
   }
-
 }
