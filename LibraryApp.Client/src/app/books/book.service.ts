@@ -26,6 +26,7 @@ export class BookService {
     }
 
     loadBooks(): Observable<IBook[]> {
+        
         return this.http.get<IBook[]>(`${this.apiUrl}/book`);
     }
 
