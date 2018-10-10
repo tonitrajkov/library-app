@@ -23,10 +23,19 @@ export class BookDetailComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
 
-    this.bookService.getBooks()
-      .subscribe(books => {
-        this.book = books.filter((book: IBook) =>
-          book.bookId == parseInt(id))[0];
+    // this.bookService.getBooks()
+    //   .subscribe(books => {
+    //     this.book = books.filter((book: IBook) =>
+    //       book.id == parseInt(id))[0];
+    //   });
+
+    this.getBook(id);
+  }
+
+  getBook(bookId) {
+    this.bookService.getBook(bookId)
+      .subscribe(book => {
+        this.book = book;
       });
   }
 

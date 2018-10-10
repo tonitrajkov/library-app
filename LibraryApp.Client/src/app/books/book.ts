@@ -1,10 +1,11 @@
 export interface IBook {
-    bookId: number;
+    id: number;
+    title: string;
     originalTitle: string;
     author: string;
     genre: string;
     publishingHouse: string;
-    pages: number;
-    starRating: number;
+    pagesNum: number;
+    rating: number;
     imageUrl: string;
 }
