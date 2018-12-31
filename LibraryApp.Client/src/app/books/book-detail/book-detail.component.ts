@@ -11,7 +11,8 @@ import { IBook } from 'src/app/books/book';
 })
 export class BookDetailComponent implements OnInit {
   pageTitle: string = 'Book Detail';
-  book: IBook
+  book: IBook;
+  isEditing: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,5 +42,13 @@ export class BookDetailComponent implements OnInit {
 
   onBack(): void {
     this.router.navigate(['/books']);
+  }
+
+  editBook(): void {
+    this.isEditing = true;
+  }
+
+  saveBook(): void {
+    this.isEditing = false;
   }
 }

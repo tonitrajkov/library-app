@@ -29,7 +29,7 @@ export class BookListComponent implements OnInit {
 
 
 
-    constructor(private bookService: BookService) {}
+    constructor(private bookService: BookService) { }
 
     ngOnInit(): void {
         // this.bookService.getBooks().subscribe(
@@ -56,7 +56,7 @@ export class BookListComponent implements OnInit {
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
-    
+
     loadBooks() {
         this.bookService.loadBooks()
             .subscribe(books => {

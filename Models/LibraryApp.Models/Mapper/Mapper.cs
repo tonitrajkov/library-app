@@ -21,7 +21,8 @@ namespace LibraryApp.Models.Mapper
                 PagesNum = book.PagesNum,
                 PublishingHouse = book.PublishingHouse,
                 Rating = book.Rating,
-                Title = book.Title
+                Title = book.Title,
+                Description = book.Description
             };
         }
 
@@ -42,7 +43,8 @@ namespace LibraryApp.Models.Mapper
                 PagesNum = model.PagesNum,
                 PublishingHouse = model.PublishingHouse,
                 Rating = model.Rating,
-                Title = model.Title
+                Title = model.Title,
+                Description = model.Description
             };
         }
 

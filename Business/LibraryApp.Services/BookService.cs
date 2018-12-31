@@ -28,7 +28,8 @@ namespace LibraryApp.Services
                    PagesNum = 415,
                    Rating = 4.56,
                    ImageUrl =  "http://sakamknigi.mk/wp-content/uploads/2015/09/11.jpg",
-                   Title = "Славејот"
+                   Title = "Славејот",
+                   Description = "Test description for Slavejot"
                 },
                  new Book {
                     Id = 2,

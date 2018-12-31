@@ -8,4 +8,5 @@ export interface IBook {
     pagesNum: number;
     rating: number;
     imageUrl: string;
+    description: string;
 }
