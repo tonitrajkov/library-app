@@ -23,13 +23,6 @@ export class BookDetailComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
-
-    // this.bookService.getBooks()
-    //   .subscribe(books => {
-    //     this.book = books.filter((book: IBook) =>
-    //       book.id == parseInt(id))[0];
-    //   });
-
     this.getBook(id);
   }
 
