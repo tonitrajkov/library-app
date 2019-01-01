@@ -27,8 +27,6 @@ export class BookListComponent implements OnInit {
         this.filteredBooks = this._listFilter ? this.performFilter(this.listFilter) : this.books;
     }
 
-
-
     constructor(private bookService: BookService) { }
 
     ngOnInit(): void {
