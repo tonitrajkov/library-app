@@ -30,14 +30,6 @@ export class BookListComponent implements OnInit {
     constructor(private bookService: BookService) { }
 
     ngOnInit(): void {
-        // this.bookService.getBooks().subscribe(
-        //     books => {
-        //         this.books = books,
-        //             this.filteredBooks = this.books;
-        //     },
-        //     error => this.errorMessage = <any>error
-        // );
-
         this.loadBooks();
     }
 
