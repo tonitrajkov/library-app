@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { WelcomeComponent } from './books/welcome.component';
+
+// modules
 import { BookModule } from './books/book.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-// import { ConfigModule } from 'src/app/config/config.module';
+// components
+import { AppComponent } from './app.component';
+import { WelcomeComponent } from './books/welcome.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ]),
     BookModule,
     SharedModule
-    // ConfigModule
   ],
   bootstrap: [AppComponent]
 })

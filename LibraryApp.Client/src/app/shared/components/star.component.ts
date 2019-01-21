@@ -6,8 +6,7 @@ import { Output } from "@angular/core";
 
 @Component({
     selector: 'app-star',
-    templateUrl: './star.component.html',
-    styleUrls: ['./star.component.css']
+    templateUrl: './star.component.html'
 })
 
 export class StarComponent implements OnChanges{
