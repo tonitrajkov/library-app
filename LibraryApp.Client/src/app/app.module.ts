@@ -2,13 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-// modules
-import { BookModule } from './books/book.module';
-import { SharedModule } from 'src/app/shared/shared.module';
-// components
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './books/welcome.component';
+import { BookModule } from './books/book.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
