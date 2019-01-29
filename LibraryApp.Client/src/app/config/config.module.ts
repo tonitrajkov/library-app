@@ -8,16 +8,22 @@ import { SharedModule } from '../shared/shared.module';
 
 // components
 import { ConfigComponent } from 'src/app/config/config.component';
+import { AuthorsComponent } from 'src/app/config/authors/authors.component';
 
 @NgModule({
     imports: [
         RouterModule.forChild([
-            { path: '', component: ConfigComponent }
+            { path: '', component: ConfigComponent, 
+            children: [
+                { path: 'authors', component: AuthorsComponent }
+            ]  
+        }
         ]),
         SharedModule
     ],
     declarations: [
-        ConfigComponent
+        ConfigComponent,
+        AuthorsComponent
     ],
     exports: [
 

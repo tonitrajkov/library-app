@@ -3,8 +3,16 @@
 </div>
 
 <ngb-tabset>
-    <ngb-tab title="Authors"></ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle routerLinkActive="active">
+            <a [routerLink]="['authors']">Authors</a>
+        </ng-template>
+    </ngb-tab>
     <ngb-tab title="Books"></ngb-tab>
     <ngb-tab title="Users"></ngb-tab>
     <ngb-tab title="Registers"></ngb-tab>
 </ngb-tabset>
+
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
