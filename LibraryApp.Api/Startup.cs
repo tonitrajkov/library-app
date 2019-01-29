@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LibraryApp.Services;
-using LibraryApp.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+
+using LibraryApp.Data;
+using LibraryApp.Data.Implementations;
+using LibraryApp.Data.Interfaces;
+using LibraryApp.Services;
+using LibraryApp.Services.Interfaces;
 
 namespace LibraryApp.Api
 {
@@ -37,7 +42,15 @@ namespace LibraryApp.Api
                     });
             });
 
+            services.AddDbContext<LibraryAppContext>(
+               options =>
+               options
+               .UseLazyLoadingProxies()
+               .UseSqlServer(Configuration.GetConnectionString("LibraryAppConnection")));
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IBookService, BookService>();
+            services.AddTransient<IAuthorService, AuthorSevice>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

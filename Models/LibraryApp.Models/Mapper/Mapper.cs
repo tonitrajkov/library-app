@@ -26,6 +26,18 @@ namespace LibraryApp.Models.Mapper
             };
         }
 
+        public static AuthorModel ToModel(this Author author)
+        {
+            return new AuthorModel
+            {
+                Id = author.Id,
+                Avatar = author.Avatar,
+                Bio = author.Bio,
+                Firstname = author.Firstname,
+                Lastname = author.Lastname
+            };
+        }
+
         #endregion
 
 
@@ -45,6 +57,18 @@ namespace LibraryApp.Models.Mapper
                 Rating = model.Rating,
                 Title = model.Title,
                 Description = model.Description
+            };
+        }
+
+        public static Author ToDomain(this AuthorModel model)
+        {
+            return new Author
+            {
+                Id = model.Id,
+                Avatar = model.Avatar,
+                Bio = model.Bio,
+                Firstname = model.Firstname,
+                Lastname = model.Lastname
             };
         }
 

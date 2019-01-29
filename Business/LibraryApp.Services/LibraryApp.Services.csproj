@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\LibraryApp.Data\LibraryApp.Data.csproj" />
     <ProjectReference Include="..\..\Domain\LibraryApp.Domain\LibraryApp.Domain.csproj" />
     <ProjectReference Include="..\..\Models\LibraryApp.Models\LibraryApp.Models.csproj" />
     <ProjectReference Include="..\LibraryApp.Services.Interfaces\LibraryApp.Services.Interfaces.csproj" />
