@@ -13,3 +13,79 @@ div.card {
 .table {
     margin-top: 10px
 }
+
+/* ----- Header style ------- */
+header {
+    position: fixed;
+    width: 100%;
+    top:0;
+}
+.header-fixed {
+    height: 100px;
+    background-color: #85dcd2;
+}
+
+.header-fixed .logo-icon {
+    background-image: url("./assets//images/logo-icon-one.jpg");
+    display: block;
+    width: 80px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: 10px;
+}
+
+.header-fixed .container {
+    height: 100px;
+}
+
+.main-menu {
+    background-color: #fff;
+}
+
+.main-menu .navbar {
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.main-menu .navbar .nav-link {
+    padding: 5px 30px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.main-menu .navbar .nav-link.active {
+    color: #860000;
+}
+
+.main-menu .navbar .nav-link {
+    color: #ef1d24;
+    font-weight: 600;
+}
+
+.main-menu .navbar .nav-link:hover {
+    cursor: pointer;
+    color: #d20c0c;
+}
+
+/* ----- Main container ------- */
+.main-container.container {
+    padding-top: 180px;
+    height: 100vh;
+}
+
+
+/* ----- Configuration style ------- */
+.page-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #f9c27d;
+    border-radius: 5px;
+    padding: 18px 16px;
+    color: #484848;
+}
+
+.tab-container {
+    margin-top: 20px;
+}

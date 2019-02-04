@@ -31,10 +31,10 @@ namespace LibraryApp.Models.Mapper
             return new AuthorModel
             {
                 Id = author.Id,
-                Avatar = author.Avatar,
-                Bio = author.Bio,
-                Firstname = author.Firstname,
-                Lastname = author.Lastname
+                ImageUrl = author.Avatar,
+                Biography = author.Bio,
+                FirstName = author.Firstname,
+                LastName = author.Lastname
             };
         }
 
@@ -65,10 +65,10 @@ namespace LibraryApp.Models.Mapper
             return new Author
             {
                 Id = model.Id,
-                Avatar = model.Avatar,
-                Bio = model.Bio,
-                Firstname = model.Firstname,
-                Lastname = model.Lastname
+                Avatar = model.ImageUrl,
+                Bio = model.Biography,
+                Firstname = model.FirstName,
+                Lastname = model.LastName
             };
         }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgbModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTabsetModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 // components
 import { StarComponent } from './components/star.component';
@@ -10,7 +10,8 @@ import { StarComponent } from './components/star.component';
   imports: [
     CommonModule,
     NgbModule.forRoot(),
-    NgbTabsetModule
+    NgbTabsetModule,
+    NgbModalModule
   ],
   declarations: [
     StarComponent,
@@ -21,7 +22,8 @@ import { StarComponent } from './components/star.component';
     CommonModule,
     FormsModule,
     NgbModule,
-    NgbTabsetModule
+    NgbTabsetModule,
+    NgbModalModule
   ]
 })
 export class SharedModule { }

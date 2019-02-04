@@ -33,7 +33,6 @@ export class BookService {
         return this.http.get<IBook>(`${this.apiUrl}/book/${bookId}`);
     }
 
-
     private handleError(err: HttpErrorResponse) {
         let errorMessage = '';
         if (err.error instanceof ErrorEvent) {

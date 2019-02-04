@@ -38,10 +38,10 @@ namespace LibraryApp.Services
             if (author == null)
                 throw new Exception("AUTHOR_DOESNT_EXIST");
 
-            author.Firstname = model.Firstname;
-            author.Lastname = model.Lastname;
-            author.Bio = model.Bio;
-            author.Avatar = model.Avatar;
+            author.Firstname = model.FirstName;
+            author.Lastname = model.LastName;
+            author.Bio = model.Biography;
+            author.Avatar = model.ImageUrl;
 
             await _authorRepository.UpdateAsync(author);
         }
