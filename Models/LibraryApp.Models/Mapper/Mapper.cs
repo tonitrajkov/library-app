@@ -38,6 +38,24 @@ namespace LibraryApp.Models.Mapper
             };
         }
 
+        public static RoleModel ToModel(this Role role)
+        {
+            return new RoleModel
+            {
+                Id = role.Id,
+                Title = role.Title
+            };
+        }
+
+        public static GenreModel ToModel(this Genre genre)
+        {
+            return new GenreModel
+            {
+                Id = genre.Id,
+                Title = genre.Title
+            };
+        }
+
         #endregion
 
 
@@ -69,6 +87,24 @@ namespace LibraryApp.Models.Mapper
                 Bio = model.Biography,
                 Firstname = model.FirstName,
                 Lastname = model.LastName
+            };
+        }
+
+        public static Role ToDomain(this RoleModel model)
+        {
+            return new Role
+            {
+                Id = model.Id,
+                Title = model.Title
+            };
+        }
+
+        public static Genre ToDomain(this GenreModel model)
+        {
+            return new Genre
+            {
+                Id = model.Id,
+                Title = model.Title
             };
         }
 
