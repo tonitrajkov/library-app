@@ -1,2 +1,32 @@
-<p>Text</p>
+<table class='table'>
+    <tr>
+        <td>Слика</td>
+        <td>Име</td>
+        <td>Презиме</td>
+        <td>Биографија</td>
+        <td>Акции</td>
+
+    </tr>
+    <tr *ngFor="let author of authors">
+        <td></td>
+        <td>
+            {{author.firstName}}
+        </td>
+        <td>
+            {{author.lastName}}
+        </td>
+        <td>
+            {{author.biography}}
+        </td>
+        <td>
+            <a (click)="deleteAuthor(author)">Избриши </a>
+            <a (click)="updateAuthor(author)">Промени </a>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
 <button (click)="openModal()">Open modal</button>

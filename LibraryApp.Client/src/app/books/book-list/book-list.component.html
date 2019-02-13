@@ -1,59 +1,48 @@
 <div class='card'>
     <div class='card-header'>
-        {{pageTitle}}
+        Книги
     </div>
     <div class='card-body'>
         <div class='row'>
-            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-2'>Пребарувај</div>
             <div class='col-md-4'>
-                <input type='text' 
-                 [(ngModel)]='listFilter' />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-md-6'>
-                <h4>Filtered by: {{listFilter}}</h4>
+                <input type='text' [(ngModel)]='listFilter' />
             </div>
         </div>
 
-        <div class='table'
-            *ngIf='books && books.length'>
-            <thead>
+
+        <div class='table' *ngIf='books && books.length'>
+            <thead class="table-head">
                 <tr>
                     <th>
-                        <button class='btn btn-primary'
-                        (click)='toggleImage()'>
-                         {{showImage ? 'Hide' : 'Show'}} Image
+                        <button class='btn btn-primary' (click)='toggleImage()'>
+                            {{showImage ? 'Сокриј' : 'Прикажи'}} слика
                         </button>
                     </th>
-                    <th>Original Title</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                    <th>Publishing House</th>
-                    <th>Pages</th>
-                    <th>5 Star Rating</th>
+                    <th class="th">Наслов на книга</th>
+                    <th class="th">Автор</th>
+                    <th class="th">Жанр</th>
+                    <th class="th">Издавачка куќа</th>
+                    <th class="th">Број на страници</th>
+                    <th class="th">Рејтинг</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor='let book of filteredBooks'>
                     <td>
-                        <img *ngIf='showImage' 
-                        [src]='book.imageUrl'
-                        [title]='book.originalTitle'
-                        [style.width.px]='imageWidth'
-                        [style.margin.px]='imageMargin'>
+                        <img *ngIf='showImage' [src]='book.imageUrl' [title]='book.originalTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
                     </td>
-                    <td><a [routerLink]="['/books', book.id]">
-                        {{ book.originalTitle }}
-                    </a>
+                    <td>
+                        <a [routerLink]="['/books', book.id]">
+                            {{ book.originalTitle }}
+                        </a>
                     </td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.genre }}</td>
                     <td>{{ book.publishingHouse }}</td>
                     <td>{{ book.pagesNum }}</td>
                     <td>
-                    <app-star [rating]='book.rating'
-                    (ratingClicked)='onRatingClicked($event)'></app-star>
+                        <app-star [rating]='book.rating' (ratingClicked)='onRatingClicked($event)'></app-star>
                     </td>
 
                 </tr>

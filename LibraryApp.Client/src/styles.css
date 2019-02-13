@@ -89,3 +89,61 @@ header {
 .tab-container {
     margin-top: 20px;
 }
+
+
+
+/* ----- Book List Style ------- */
+
+.card .card-header {
+    background-color: #f9c27d;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 18px 16px;
+    color: #484848;
+}
+
+.col-md-2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 200px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+    color: #ef1d24;
+}
+
+.btn.btn-primary {
+    background-color: #85dcd2;
+    color: #ef1d24;
+    font-weight: 500;
+    border: none;
+}
+
+.btn.btn-primary:hover {
+    background-color: #7ef5e7;
+    color: #d20c0c;
+    border: none;
+}
+
+/*.btn.btn-primary:active {
+    background-color: #348a80;
+    border: none;
+    color: #860000;
+}*/
+
+.table-head .th{
+    color: #ef1d24;
+}
+
+
+/* ----- Book Detail Style ------- */
+
+.btn.btn-outline-secondary {
+    background-color: #85dcd2;
+    color: #ef1d24;
+    font-weight: 500;
+    border: none;
+    margin-right: 20px;
+    margin-left: 10px;
+}

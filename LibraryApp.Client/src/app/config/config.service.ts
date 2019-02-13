@@ -18,4 +18,15 @@ export class ConfigService {
     addAuthor(model: IAuthor): Observable<any> {
         return this.http.post(`${this.apiUrl}/configuration`, model );
     }
+
+    loadAuthors(): Observable<IAuthor[]> {
+        return this.http.get<IAuthor[]>(`${this.apiUrl}/configuration`);
+    }
+
+    deleteAuthor(authorId: number): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/configuration/` + authorId);
+    }
+    updateAuthor(model: IAuthor): Observable<any> {
+        return this.http.put(`${this.apiUrl}/configuration`, model);
+    }
 }
