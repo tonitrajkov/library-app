@@ -3,14 +3,16 @@ using LibraryApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LibraryApp.Data.Migrations
 {
     [DbContext(typeof(LibraryAppContext))]
-    partial class LibraryAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190205181127_genre_role_tables")]
+    partial class genre_role_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,7 @@ namespace LibraryApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(250);
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
@@ -62,9 +62,7 @@ namespace LibraryApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(250);
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 

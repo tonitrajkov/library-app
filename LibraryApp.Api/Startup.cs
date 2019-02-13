@@ -51,15 +51,17 @@ namespace LibraryApp.Api
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IBookService, BookService>();
             services.AddTransient<IAuthorService, AuthorSevice>();
+            services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IGenreService, GenreService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
+            //}
 
             app.UseCors("AllowAllOrigins");
             app.UseMvc();
