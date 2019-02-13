@@ -11,7 +11,7 @@ import { IAuthor } from '../shared/models/author';
 
 @Injectable()
 export class ConfigService {
-    private apiUrl = 'http://libraryapp/api';
+    private apiUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) { }
 
@@ -20,13 +20,13 @@ export class ConfigService {
     }
 
     loadAuthors(): Observable<IAuthor[]> {
-        return this.http.get<IAuthor[]>(`${this.apiUrl}/configuration`);
+        return this.http.get<IAuthor[]>(`${this.apiUrl}/configuration/author`);
     }
 
     deleteAuthor(authorId: number): Observable<any> {
-        return this.http.delete(`${this.apiUrl}/configuration/` + authorId);
+        return this.http.delete(`${this.apiUrl}/configuration/author/` + authorId);
     }
     updateAuthor(model: IAuthor): Observable<any> {
-        return this.http.put(`${this.apiUrl}/configuration`, model);
+        return this.http.put(`${this.apiUrl}/configuration/author`, model);
     }
 }
