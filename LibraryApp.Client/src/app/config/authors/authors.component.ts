@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { AuthorDialogComponent } from './author-dialog.component';
+import { AuthorModalComponent } from './author-modal.component';
 import { ConfigService } from '../config.service';
 import { IAuthor } from 'src/app/shared/models/author';
 
@@ -24,31 +24,36 @@ export class AuthorsComponent implements OnInit {
 
     public deleteAuthor(author: IAuthor) {
         this.configService.deleteAuthor(author.id)
-        .subscribe(result => {
-            if(result) {
-                this.loadAuthors();
-            }
-        })
+            .subscribe(result => {
+                if (result) {
+                    this.loadAuthors();
+                }
+            })
     }
 
     public updateAuthor(author: IAuthor) {
-
+        this.openAuthorModal(author.id);
     }
+
+    public addAuthor() {
+        this.openAuthorModal(undefined);
+    }
+
     public loadAuthors() {
         this.configService.loadAuthors()
-        .subscribe(result => {
-            this.authors = result;
-        });
+            .subscribe(result => {
+                this.authors = result;
+            });
     }
 
-    public openModal() {
-        const modalRef = this.modalService.open(AuthorDialogComponent);
-        modalRef.componentInstance.authorId = 1;
+    public openAuthorModal(authorId: number | undefined) {
+        const modalRef = this.modalService.open(AuthorModalComponent);
+        modalRef.componentInstance.authorId = authorId;
 
         modalRef.result.then((result) => {
-            console.log(result);
-        }).catch((error) => {
-            console.log(error);
+            if (result == true) {
+                this.loadAuthors();
+            }
         });
     }
 

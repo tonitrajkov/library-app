@@ -10,7 +10,7 @@ import { ConfigService } from './config.service';
 // components
 import { ConfigComponent } from 'src/app/config/config.component';
 import { AuthorsComponent } from 'src/app/config/authors/authors.component';
-import { AuthorDialogComponent } from './authors/author-dialog.component';
+import { AuthorModalComponent } from './authors/author-modal.component';
 
 @NgModule({
     imports: [
@@ -29,7 +29,7 @@ import { AuthorDialogComponent } from './authors/author-dialog.component';
     declarations: [
         ConfigComponent,
         AuthorsComponent,
-        AuthorDialogComponent
+        AuthorModalComponent
     ],
     providers: [
         ConfigService
@@ -38,7 +38,7 @@ import { AuthorDialogComponent } from './authors/author-dialog.component';
 
     ],
     entryComponents: [
-        AuthorDialogComponent
+        AuthorModalComponent
     ]
 })
 export class ConfigModule { }

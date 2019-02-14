@@ -15,18 +15,23 @@ export class ConfigService {
 
     constructor(private http: HttpClient) { }
 
-    addAuthor(model: IAuthor): Observable<any> {
+    public addAuthor(model: IAuthor): Observable<any> {
         return this.http.post(`${this.apiUrl}/configuration/author`, model );
     }
 
-    loadAuthors(): Observable<IAuthor[]> {
+    public loadAuthors(): Observable<IAuthor[]> {
         return this.http.get<IAuthor[]>(`${this.apiUrl}/configuration/author`);
     }
 
-    deleteAuthor(authorId: number): Observable<any> {
+    public deleteAuthor(authorId: number): Observable<any> {
         return this.http.delete(`${this.apiUrl}/configuration/author/` + authorId);
     }
-    updateAuthor(model: IAuthor): Observable<any> {
+
+    public updateAuthor(model: IAuthor): Observable<any> {
         return this.http.put(`${this.apiUrl}/configuration/author`, model);
+    }
+
+    public getAuthorById(authorId: number): Observable<IAuthor> {
+        return this.http.get<IAuthor>(`${this.apiUrl}/configuration/author/` + authorId);
     }
 }

@@ -1,32 +1,37 @@
-<table class='table'>
-    <tr>
-        <td>Слика</td>
-        <td>Име</td>
-        <td>Презиме</td>
-        <td>Биографија</td>
-        <td>Акции</td>
+<div class="filter-container row">
+    <div class="col-md-6 filter-container">
 
-    </tr>
-    <tr *ngFor="let author of authors">
-        <td></td>
-        <td>
-            {{author.firstName}}
-        </td>
-        <td>
-            {{author.lastName}}
-        </td>
-        <td>
-            {{author.biography}}
-        </td>
-        <td>
-            <a (click)="deleteAuthor(author)">Избриши </a>
-            <a (click)="updateAuthor(author)">Промени </a>
-        </td>
-    </tr>
-</table>
-
-
-
-
-
-<button (click)="openModal()">Open modal</button>
+    </div>
+    <div class="col-md-6 action-btn-container">
+        <button (click)="addAuthor()" class="btn action-btn btn-sm">Внеси автор</button>
+    </div>
+</div>
+<div class="list-container">
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>Слика</th>
+                <th>Име</th>
+                <th>Презиме</th>
+                <th>Биографија</th>
+                <th>Акции</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let author of authors">
+            <td></td>
+            <td>
+                {{author.firstName}}
+            </td>
+            <td>
+                {{author.lastName}}
+            </td>
+            <td>
+                {{author.biography}}
+            </td>
+            <td>
+                <a class="table-action-link" (click)="deleteAuthor(author)">Избриши </a>
+                <a class="table-action-link" (click)="updateAuthor(author)">Промени </a>
+            </td>
+        </tr>
+    </table>
+</div>

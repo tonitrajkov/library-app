@@ -76,6 +76,11 @@ header {
 
 
 /* ----- Configuration style ------- */
+
+.config-page {
+    padding-top: 15px;
+}
+
 .page-title {
     font-size: 20px;
     font-weight: 600;
@@ -90,7 +95,23 @@ header {
     margin-top: 20px;
 }
 
+.action-btn-container {
+    text-align: right;
+}
 
+.list-container {
+    padding-top: 5px;
+}
+
+.table-action-link {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.table-action-link:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
 
 /* ----- Book List Style ------- */
 
