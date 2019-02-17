@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
@@ -11,7 +10,7 @@ using LibraryApp.Services.Interfaces;
 
 namespace LibraryApp.Services
 {
-    public class GenreService: IGenreService
+    public class GenreService : IGenreService
     {
         #region Declaration & Ctor
 
@@ -26,43 +25,43 @@ namespace LibraryApp.Services
 
         #endregion
 
-        public async Task AddGenre(GenreModel model)
+        public void AddGenre(GenreModel model)
         {
             var genre = model.ToDomain();
-            await _genreRepository.CreateAsync(genre);
+            _genreRepository.Create(genre);
         }
 
-        public async Task UpdateGenre(GenreModel model)
+        public void UpdateGenre(GenreModel model)
         {
-            var genre = await _genreRepository.GetByIdAsync(model.Id);
+            var genre = _genreRepository.GetById(model.Id);
             if (genre == null)
                 throw new Exception("GENRE_DOESNT_EXIST");
 
             genre.Title = model.Title;
-            await _genreRepository.UpdateAsync(genre);
+            _genreRepository.Update(genre);
         }
 
-        public async Task DeleteGenreById(int genreId)
+        public void DeleteGenreById(int genreId)
         {
-            var genre = await _genreRepository.GetByIdAsync(genreId);
+            var genre = _genreRepository.GetById(genreId);
             if (genre == null)
                 throw new Exception("GENRE_DOESNT_EXIST");
 
-            await _genreRepository.DeleteAsync(genre);
+            _genreRepository.Delete(genre);
         }
 
-        public async Task<GenreModel> GetGenreById(int genreId)
+        public GenreModel GetGenreById(int genreId)
         {
-            var genre = await _genreRepository.GetByIdAsync(genreId);
+            var genre = _genreRepository.GetById(genreId);
             if (genre == null)
                 throw new Exception("GENRE_DOESNT_EXIST");
 
             return genre.ToModel();
         }
 
-        public async Task<IEnumerable<GenreModel>> LoadGenres()
+        public List<GenreModel> LoadGenres()
         {
-            return (await _genreRepository.GetAllAsync())
+            return _genreRepository.GetAll()
                      .Select(g => g.ToModel()).ToList();
         }
     }

@@ -1,10 +1,11 @@
-﻿using LibraryApp.Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using LibraryApp.Domain;
 using LibraryApp.Models;
 using LibraryApp.Models.Mapper;
 using LibraryApp.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace LibraryApp.Services
 {
@@ -98,7 +99,7 @@ namespace LibraryApp.Services
             return book.ToModel();
         }
 
-        public IEnumerable<BookModel> LoadBooks()
+        public List<BookModel> LoadBooks()
         {
             return _books.Select(b => b.ToModel());
         }
