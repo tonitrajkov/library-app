@@ -1,15 +1,14 @@
 ﻿using LibraryApp.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LibraryApp.Services.Interfaces
 {
     public interface IGenreService
     {
-        Task AddGenre(GenreModel model);
-        Task UpdateGenre(GenreModel model);
-        Task DeleteGenreById(int genreId);
-        Task<GenreModel> GetGenreById(int genreId);
-        Task<IEnumerable<GenreModel>> LoadGenres();
+        void AddGenre(GenreModel model);
+        void UpdateGenre(GenreModel model);
+        void DeleteGenreById(int genreId);
+        GenreModel GetGenreById(int genreId);
+        List<GenreModel> LoadGenres();
     }
 }

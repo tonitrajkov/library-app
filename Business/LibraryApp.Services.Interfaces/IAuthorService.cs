@@ -1,15 +1,14 @@
 ﻿using LibraryApp.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LibraryApp.Services.Interfaces
 {
     public interface IAuthorService
     {
-        Task AddAuthor(AuthorModel model);
-        Task UpdateAuthor(AuthorModel model);
-        Task DeleteAuthorById(int authorId);
-        Task<AuthorModel> GetAuthorById(int authorId);
-        Task<IEnumerable<AuthorModel>> LoadAuthors();
+        void AddAuthor(AuthorModel model);
+        void UpdateAuthor(AuthorModel model);
+        void DeleteAuthorById(int authorId);
+        AuthorModel GetAuthorById(int authorId);
+        List<AuthorModel> LoadAuthors();
     }
 }

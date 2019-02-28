@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
@@ -26,15 +25,15 @@ namespace LibraryApp.Services
 
         #endregion
 
-        public async Task AddAuthor(AuthorModel model)
+        public void AddAuthor(AuthorModel model)
         {
             var author = model.ToDomain();
-            await _authorRepository.CreateAsync(author);
+            _authorRepository.Create(author);
         }
 
-        public async Task UpdateAuthor(AuthorModel model)
+        public void UpdateAuthor(AuthorModel model)
         {
-            var author = await _authorRepository.GetByIdAsync(model.Id);
+            var author = _authorRepository.GetById(model.Id);
             if (author == null)
                 throw new Exception("AUTHOR_DOESNT_EXIST");
 
@@ -43,30 +42,30 @@ namespace LibraryApp.Services
             author.Bio = model.Biography;
             author.Avatar = model.ImageUrl;
 
-            await _authorRepository.UpdateAsync(author);
+            _authorRepository.Update(author);
         }
 
-        public async Task DeleteAuthorById(int authorId)
+        public void DeleteAuthorById(int authorId)
         {
-            var author = await _authorRepository.GetByIdAsync(authorId);
+            var author = _authorRepository.GetById(authorId);
             if (author == null)
                 throw new Exception("AUTHOR_DOESNT_EXIST");
 
-            await _authorRepository.DeleteAsync(author);
+            _authorRepository.Delete(author);
         }
 
-        public async Task<AuthorModel> GetAuthorById(int authorId)
+        public AuthorModel GetAuthorById(int authorId)
         {
-            var author = await _authorRepository.GetByIdAsync(authorId);
+            var author = _authorRepository.GetById(authorId);
             if (author == null)
                 throw new Exception("AUTHOR_DOESNT_EXIST");
 
             return author.ToModel();
         }
 
-        public async Task<IEnumerable<AuthorModel>> LoadAuthors()
+        public List<AuthorModel> LoadAuthors()
         {
-            return (await _authorRepository.GetAllAsync())
+            return _authorRepository.GetAll()
                     .Select(a => a.ToModel()).ToList();
         }
     }

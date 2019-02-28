@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
@@ -26,43 +25,43 @@ namespace LibraryApp.Services
 
         #endregion
 
-        public async Task AddRole(RoleModel model)
+        public void AddRole(RoleModel model)
         {
             var role = model.ToDomain();
-            await _roleRepository.CreateAsync(role);
+            _roleRepository.Create(role);
         }
 
-        public async Task UpdateRole(RoleModel model)
+        public void UpdateRole(RoleModel model)
         {
-            var role = await _roleRepository.GetByIdAsync(model.Id);
+            var role = _roleRepository.GetById(model.Id);
             if (role == null)
                 throw new Exception("ROLE_DOESNT_EXIST");
 
             role.Title = model.Title;
-            await _roleRepository.UpdateAsync(role);
+            _roleRepository.Update(role);
         }
 
-        public async Task DeleteRoleById(int RoleId)
+        public void DeleteRoleById(int RoleId)
         {
-            var role = await _roleRepository.GetByIdAsync(RoleId);
+            var role = _roleRepository.GetById(RoleId);
             if (role == null)
                 throw new Exception("ROLE_DOESNT_EXIST");
 
-            await _roleRepository.DeleteAsync(role);
+            _roleRepository.Delete(role);
         }
 
-        public async Task<RoleModel> GetRoleById(int roleId)
+        public RoleModel GetRoleById(int roleId)
         {
-            var role = await _roleRepository.GetByIdAsync(roleId);
+            var role = _roleRepository.GetById(roleId);
             if (role == null)
                 throw new Exception("Role_DOESNT_EXIST");
 
             return role.ToModel();
         }
 
-        public async Task<IEnumerable<RoleModel>> LoadRoles()
+        public List<RoleModel> LoadRoles()
         {
-            return (await _roleRepository.GetAllAsync())
+            return _roleRepository.GetAll()
                      .Select(r => r.ToModel()).ToList();
         }
     }

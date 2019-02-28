@@ -9,6 +9,6 @@ namespace LibraryApp.Services.Interfaces
         void UpdateBook(BookModel model);
         void DeleteBookById(int bookId);
         BookModel GetBookById(int bookId);
-        IEnumerable<BookModel> LoadBooks();
+        List<BookModel> LoadBooks();
     }
 }
