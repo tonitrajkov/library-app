@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { ConfigService } from './config.service';
 
 // components
-import { ConfigComponent } from 'src/app/config/config.component';
-import { AuthorsComponent } from 'src/app/config/authors/authors.component';
+import { ConfigComponent } from './config.component';
+import { AuthorsComponent } from './authors/authors.component';
 import { AuthorModalComponent } from './authors/author-modal.component';
+import { GenresComponent } from './genres/genres.component';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { AuthorModalComponent } from './authors/author-modal.component';
                 children: [
                     { path: '', redirectTo: 'authors' },
                     { path: 'authors', component: AuthorsComponent },
+                    { path: 'genres', component: GenresComponent },
                     { path: '**', redirectTo: 'authors' }
                 ]
             }
@@ -29,7 +31,8 @@ import { AuthorModalComponent } from './authors/author-modal.component';
     declarations: [
         ConfigComponent,
         AuthorsComponent,
-        AuthorModalComponent
+        AuthorModalComponent,
+        GenresComponent
     ],
     providers: [
         ConfigService

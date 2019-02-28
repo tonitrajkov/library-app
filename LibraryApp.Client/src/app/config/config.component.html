@@ -9,9 +9,13 @@
                 <a [routerLink]="['authors']">Автори</a>
             </ng-template>
         </ngb-tab>
+        <ngb-tab>
+        <ng-template ngbTabTitle routerLinkActive="active">
+            <a [routerLink]="['genres']">Жанрови</a>
+        </ng-template>    
+        </ngb-tab>        
         <ngb-tab title="Книги"></ngb-tab>
         <ngb-tab title="Корисници"></ngb-tab>
-        <ngb-tab title="Регистри"></ngb-tab>
     </ngb-tabset>
 </div>
 
