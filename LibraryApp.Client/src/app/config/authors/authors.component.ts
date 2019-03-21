@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthorModalComponent } from './author-modal.component';
 import { ConfigService } from '../config.service';
-import { IAuthor } from 'src/app/shared/models/author';
+import { IAuthor } from '../../shared/models/author';
 
 @Component({
     selector: 'app-authors',

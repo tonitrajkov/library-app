@@ -12,6 +12,7 @@ import { ConfigComponent } from './config.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorModalComponent } from './authors/author-modal.component';
 import { GenresComponent } from './genres/genres.component';
+import { GenreModalComponent } from './genres/genre-modal.component';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { GenresComponent } from './genres/genres.component';
         ConfigComponent,
         AuthorsComponent,
         AuthorModalComponent,
-        GenresComponent
+        GenresComponent,
+        GenreModalComponent
     ],
     providers: [
         ConfigService
@@ -41,7 +43,8 @@ import { GenresComponent } from './genres/genres.component';
 
     ],
     entryComponents: [
-        AuthorModalComponent
+        AuthorModalComponent,
+        GenreModalComponent
     ]
 })
 export class ConfigModule { }
