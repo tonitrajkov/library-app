@@ -101,7 +101,7 @@ namespace LibraryApp.Services
 
         public List<BookModel> LoadBooks()
         {
-            return _books.Select(b => b.ToModel());
+            return _books.Select(b => b.ToModel()).ToList();
         }
 
         private int GetNextId()

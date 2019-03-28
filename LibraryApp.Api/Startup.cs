@@ -53,6 +53,7 @@ namespace LibraryApp.Api
             services.AddTransient<IAuthorService, AuthorSevice>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

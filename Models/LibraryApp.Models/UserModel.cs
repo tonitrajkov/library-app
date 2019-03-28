@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LibraryApp.Domain
+namespace LibraryApp.Models
 {
-    public class User
+    public class UserModel
     {
         public int Id { get; set; }
     }

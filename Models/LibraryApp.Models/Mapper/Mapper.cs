@@ -56,6 +56,11 @@ namespace LibraryApp.Models.Mapper
             };
         }
 
+        public static UserModel ToModel(this User user)
+        {
+            return new UserModel();
+        }
+
         #endregion
 
 
@@ -106,6 +111,11 @@ namespace LibraryApp.Models.Mapper
                 Id = model.Id,
                 Title = model.Title
             };
+        }
+
+        public static User ToDomain(this UserModel model)
+        {
+            return new User();
         }
 
         #endregion
