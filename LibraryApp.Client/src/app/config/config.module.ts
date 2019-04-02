@@ -13,6 +13,10 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AuthorModalComponent } from './authors/author-modal.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenreModalComponent } from './genres/genre-modal.component';
+import { RolesComponent } from './roles/roles.component';
+import { RoleModalComponent } from './roles/role-modal.component';
+import { UsersComponent } from './users/users.component';
+import { UserModalComponent } from './users/user-modal.component';
 
 @NgModule({
     imports: [
@@ -23,6 +27,8 @@ import { GenreModalComponent } from './genres/genre-modal.component';
                     { path: '', redirectTo: 'authors' },
                     { path: 'authors', component: AuthorsComponent },
                     { path: 'genres', component: GenresComponent },
+                    { path: 'roles', component: RolesComponent },
+                    { path: 'users', component: UsersComponent },
                     { path: '**', redirectTo: 'authors' }
                 ]
             }
@@ -34,7 +40,11 @@ import { GenreModalComponent } from './genres/genre-modal.component';
         AuthorsComponent,
         AuthorModalComponent,
         GenresComponent,
-        GenreModalComponent
+        GenreModalComponent,
+        RolesComponent,
+        RoleModalComponent,
+        UsersComponent,
+        UserModalComponent,
     ],
     providers: [
         ConfigService
@@ -44,7 +54,9 @@ import { GenreModalComponent } from './genres/genre-modal.component';
     ],
     entryComponents: [
         AuthorModalComponent,
-        GenreModalComponent
+        GenreModalComponent,
+        RoleModalComponent,
+        UserModalComponent,
     ]
 })
 export class ConfigModule { }

@@ -8,6 +8,8 @@ import { throwError } from "rxjs/internal/observable/throwError";
 import { environment } from '../../environments/environment';
 import { IAuthor } from '../shared/models/author';
 import { IGenre } from '../shared/models/genre';
+import { IRole } from "../shared/models/role";
+import { IUser } from '../shared/models/user';
 
 
 @Injectable()
@@ -55,4 +57,44 @@ export class ConfigService {
     public getGenreById(genreId: number): Observable<IGenre> {
         return this.http.get<IGenre>(`${this.apiUrl}/configuration/genre/` + genreId);
     }
+
+    public addRole(model: IRole): Observable<any> {
+        return this.http.post(`${this.apiUrl}/configuration/role`, model);
+    }
+
+    public loadRoles(): Observable<IRole[]> {
+        return this.http.get<IRole[]>(`${this.apiUrl}/configuration/role`);
+    }
+
+    public deleteRole(roleId: number): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/configuration/role/` + roleId);
+    }
+
+    public updateRole(model: IRole): Observable<any> {
+        return this.http.put(`${this.apiUrl}/configuration/role`, model);
+    }
+    public getRoleById(roleId: number): Observable<IRole> {
+        return this.http.get<IRole>(`${this.apiUrl}/configuration/role/` + roleId);
+    }
+
+
+    public addUser(model: IUser): Observable<any> {
+        return this.http.post(`${this.apiUrl}/configuration/user`, model);
+    }
+
+    public loadUsers(): Observable<IUser[]> {
+        return this.http.get<IUser[]>(`${this.apiUrl}/configuration/user`);
+    }
+
+    public deleteUser(userId: number): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/configuration/user/` + userId);
+    }
+
+    public updateUser(model: IUser): Observable<any> {
+        return this.http.put(`${this.apiUrl}/configuration/user`, model);
+    }
+    public getUserById(userId: number): Observable<IUser> {
+        return this.http.get<IUser>(`${this.apiUrl}/configuration/user/` + userId);
+    }
+
 }

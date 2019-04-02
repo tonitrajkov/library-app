@@ -3,7 +3,7 @@
     
         </div>
         <div class="col-md-6 action-btn-container">
-            <button (click)="addGenre()" class="btn action-btn btn-sm">Внеси жанр</button>
+            <button (click)="addRole()" class="btn action-btn btn-sm">Внеси улога</button>
         </div>
     </div>
     <div class="list-container">
@@ -14,13 +14,13 @@
                     <th>Акции</th>
                 </tr>
             </thead>
-            <tr *ngFor="let genre of genres">
+            <tr *ngFor="let role of roles">
                 <td>
-                    {{genre.title}}
+                    {{role.title}}
                 </td>
                 <td>
-                    <a class="table-action-link" (click)="deleteGenre(genre)">Избриши </a>
-                    <a class="table-action-link" (click)="updateGenre(genre)">Промени </a>
+                    <a class="table-action-link" (click)="deleteRole(role)">Избриши </a>
+                    <a class="table-action-link" (click)="updateRole(role)">Промени </a>
                 </td>
             </tr>
         </table>
