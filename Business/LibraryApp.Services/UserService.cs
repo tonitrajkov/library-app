@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using LibraryApp.Common;
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
 using LibraryApp.Models;
@@ -28,6 +29,9 @@ namespace LibraryApp.Services
         public void AddUser(UserModel model)
         {
             var user = model.ToDomain();
+            user.CreatedOn = DateTime.Now;
+            user.Password = PasswordHash.CreateHash("123");
+
             _userRepository.Create(user);
         }
 
@@ -36,6 +40,12 @@ namespace LibraryApp.Services
             var user = _userRepository.GetById(model.Id);
             if (user == null)
                 throw new Exception("USER_DOESNT_EXIST");
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.UserName = model.UserName;
+            user.ImageUrl = model.ImageUrl;
+            user.Email = model.Email;
 
             _userRepository.Update(user);
         }
