@@ -1,7 +1,4 @@
 ﻿using LibraryApp.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LibraryApp.Models.Mapper
 {
@@ -43,7 +40,8 @@ namespace LibraryApp.Models.Mapper
             return new RoleModel
             {
                 Id = role.Id,
-                Title = role.Title
+                Title = role.Title,
+                Tag = role.Tag
             };
         }
 
@@ -109,7 +107,8 @@ namespace LibraryApp.Models.Mapper
             return new Role
             {
                 Id = model.Id,
-                Title = model.Title
+                Title = model.Title,
+                Tag = model.Tag
             };
         }
 

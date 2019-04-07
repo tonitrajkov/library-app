@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using LibraryApp.Common;
+using LibraryApp.Common.Exceptions;
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
 using LibraryApp.Models;
@@ -39,7 +40,7 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(model.Id);
             if (user == null)
-                throw new Exception("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
 
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
@@ -54,7 +55,7 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
-                throw new Exception("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
 
             _userRepository.Delete(user);
         }
@@ -63,7 +64,7 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
-                throw new Exception("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
 
             return user.ToModel();
         }

@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{45FD22
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryApp.Common", "Common\LibraryApp.Common\LibraryApp.Common.csproj", "{EC096A90-CB6B-4FED-AEF5-555B8322E7BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryApp.Models.Validators", "Models\LibraryApp.Models.Validators\LibraryApp.Models.Validators.csproj", "{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{EC096A90-CB6B-4FED-AEF5-555B8322E7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC096A90-CB6B-4FED-AEF5-555B8322E7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC096A90-CB6B-4FED-AEF5-555B8322E7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{BC2A7AB4-E105-4313-93C1-B7A95DEB78F0} = {D5A01873-6EB1-46D0-89EF-50C6AC0BC9E8}
 		{A15A6B82-C7AD-4EF2-A9AC-C4190D80C8F9} = {D5A01873-6EB1-46D0-89EF-50C6AC0BC9E8}
 		{EC096A90-CB6B-4FED-AEF5-555B8322E7BA} = {45FD2275-030A-4921-A53C-16581FB1F7C7}
+		{1549AF93-9A0C-4CAA-AFBD-3FC6665E6C42} = {41864F29-9CD4-4B29-A939-89866B2D2E3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D85E1C3-E33D-49A1-8C32-EA2E3EDA0245}

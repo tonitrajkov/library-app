@@ -13,5 +13,9 @@ namespace LibraryApp.Domain
         [Required]
         [MaxLength(250)]
         public string Title { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Tag { get; set; }
     }
 }

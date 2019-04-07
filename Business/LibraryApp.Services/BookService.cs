@@ -6,6 +6,7 @@ using LibraryApp.Domain;
 using LibraryApp.Models;
 using LibraryApp.Models.Mapper;
 using LibraryApp.Services.Interfaces;
+using LibraryApp.Common.Exceptions;
 
 namespace LibraryApp.Services
 {
