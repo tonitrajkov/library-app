@@ -33,11 +33,11 @@ namespace LibraryApp.Api.Helpers
             var msg = exception.Message;
             var code = (int)HttpStatusCode.InternalServerError;
 
-            //if (exception is InvalidModelStateException)
-            //{
-            //    code = 409;
-            //    msg = exception.Message.Replace("model.", "");
-            //}
+            if (exception is InvalidModelStateException)
+            {
+                code = 409;
+                msg = exception.Message.Replace("model.", "");
+            }
 
             if (exception is UnauthorizedAccessException)
             {

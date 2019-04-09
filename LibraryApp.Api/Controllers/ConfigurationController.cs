@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using LibraryApp.Models;
 using LibraryApp.Services.Interfaces;
+using LibraryApp.Common.Exceptions;
 
 namespace LibraryApp.Api.Controllers
 {
@@ -47,6 +48,9 @@ namespace LibraryApp.Api.Controllers
             if (model == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
+
             _authorService.AddAuthor(model);
             return Ok(true);
         }
@@ -57,6 +61,9 @@ namespace LibraryApp.Api.Controllers
         {
             if (model == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
 
             _authorService.UpdateAuthor(model);
             return Ok(true);
@@ -97,6 +104,9 @@ namespace LibraryApp.Api.Controllers
             if (model == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
+
             _genreService.AddGenre(model);
             return Ok(true);
         }
@@ -107,6 +117,9 @@ namespace LibraryApp.Api.Controllers
         {
             if (model == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
 
             _genreService.UpdateGenre(model);
             return Ok(true);
@@ -147,6 +160,9 @@ namespace LibraryApp.Api.Controllers
             if (model == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
+
             _roleService.AddRole(model);
             return Ok(true);
         }
@@ -157,6 +173,9 @@ namespace LibraryApp.Api.Controllers
         {
             if (model == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
 
             _roleService.UpdateRole(model);
             return Ok(true);
@@ -197,6 +216,9 @@ namespace LibraryApp.Api.Controllers
             if (model == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
+
             _userService.AddUser(model);
             return Ok(true);
         }
@@ -207,6 +229,9 @@ namespace LibraryApp.Api.Controllers
         {
             if (model == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
 
             _userService.UpdateUser(model);
             return Ok(true);
@@ -247,6 +272,9 @@ namespace LibraryApp.Api.Controllers
             if (model == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
+
             _bookService.AddBook(model);
             return Ok(true);
         }
@@ -257,6 +285,9 @@ namespace LibraryApp.Api.Controllers
         {
             if (model == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+                throw new InvalidModelStateException(ModelState);
 
             _bookService.UpdateBook(model);
             return Ok(true);
