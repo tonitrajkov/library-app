@@ -10,6 +10,7 @@ import { IRole } from '../../shared/models/role';
 export class RoleModalComponent implements OnInit {
 
     @Input() public roleId: number | undefined;
+    public submitted = false;    
     public modalTitle: string = 'Внесување на улога';
     public role: IRole = {} as IRole;
 
@@ -28,7 +29,10 @@ export class RoleModalComponent implements OnInit {
         });
 }
 
-public confirmAction() {
+public confirmAction(isFormValid: boolean) {
+    this.submitted = true;
+
+    if (isFormValid === true) {
     if (this.roleId !== undefined) {
         this.configService.updateRole(this.role)
             .subscribe(result => {
@@ -40,6 +44,7 @@ public confirmAction() {
             .subscribe(result => {
                 this.activateModal.close(true);
             });
+        }
     }
 }
 

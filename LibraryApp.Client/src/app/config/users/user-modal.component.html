@@ -5,34 +5,43 @@
     </button>
 </div>
 <div class="modal-body">
-    <form>
+    <form name="form" #f="ngForm" novalidate>
         <div class="form-group">
             <label for="exampleInputEmail1">Име</label>
-            <input [(ngModel)]="user.firstName" name="firstname" type="text" class="form-control" placeholder="Внеси име">
-            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="Внеси име" #firstName="ngModel" [ngClass]="{ 'is-invalid': submitted && firstName.invalid }" required>
+            <div *ngIf="submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">Полето е задолжително</div>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Презиме</label>
-            <input [(ngModel)]="user.lastName" name="lastname" type="text" class="form-control" placeholder="Внеси презиме">
-            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Внеси презиме" #lastName="ngModel" [ngClass]="{ 'is-invalid': submitted && lastName.invalid }" required>
+            <div *ngIf="submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">Полето е задолжително</div>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Корисничко име</label>
-            <input [(ngModel)]="user.userName" name="username" type="text" class="form-control" placeholder="Внеси корисничко име">
+            <input [(ngModel)]="user.userName" name="userName" type="text" class="form-control" placeholder="Внеси корисничко име" #userName="ngModel" [ngClass]="{ 'is-invalid': submitted && userName.invalid }" required>
+            <div *ngIf="submitted && userName.invalid" class="invalid-feedback">
+                <div *ngIf="userName.errors.required">Полето е задолжително</div>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Емаил адреса</label>
-            <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Внеси email адреса">
-            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Внеси email адреса" #email="ngModel" [ngClass]="{ 'is-invalid': submitted && email.invalid }" required>
+            <div *ngIf="submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Полето е задолжително</div>
+            </div>
         </div>
         <div class="form-group">
             <label class="">
-              <input type="checkbox" [(ngModel)]="user.isActive" name="isactive" > Активен
+              <input type="checkbox" [(ngModel)]="user.isActive" name="isActive" > Активен
             </label>
           </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="confirmAction()">Во ред</button>
+    <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
     <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
 </div>

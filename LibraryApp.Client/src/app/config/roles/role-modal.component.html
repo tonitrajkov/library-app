@@ -5,14 +5,17 @@
         </button>
     </div>
     <div class="modal-body">
-        <form>
+        <form name="form" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="exampleInputEmail1">Наслов</label>
-                <input [(ngModel)]="role.title" name="name" type="text" class="form-control" placeholder="Внеси име">
+                <input [(ngModel)]="role.title" name="title" type="text" class="form-control" placeholder="Внеси наслов" #title="ngModel" [ngClass]="{ 'is-invalid': submitted && title.invalid }" required>
+                <div *ngIf="submitted && title.invalid" class="invalid-feedback">
+                    <div *ngIf="title.errors.required">Полето е задолжително</div>
+                </div>
             </div>
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="confirmAction()">Во ред</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
         <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
     </div>

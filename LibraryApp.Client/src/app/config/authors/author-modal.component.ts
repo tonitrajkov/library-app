@@ -8,8 +8,9 @@ import { IAuthor } from '../../shared/models/author';
     templateUrl: './author-modal.component.html',
 })
 export class AuthorModalComponent implements OnInit {
-
+    
     @Input() public authorId: number | undefined;
+    public submitted = false;    
     public modalTitle: string = 'Внесување на автор';
     public author: IAuthor = {} as IAuthor;
 
@@ -32,19 +33,22 @@ export class AuthorModalComponent implements OnInit {
             });
     }
 
-    public confirmAction() {
+    public confirmAction(isFormValid: boolean) {
+        this.submitted = true;
 
-        if (this.authorId !== undefined) {
-            this.configService.updateAuthor(this.author)
-                .subscribe(result => {
-                    this.activateModal.close(true);
-                });
-        }
-        else {
-            this.configService.addAuthor(this.author)
-                .subscribe(result => {
-                    this.activateModal.close(true);
-                });
+        if (isFormValid === true) {
+            if (this.authorId !== undefined) {
+                this.configService.updateAuthor(this.author)
+                    .subscribe(result => {
+                        this.activateModal.close(true);
+                    });
+            }
+            else {
+                this.configService.addAuthor(this.author)
+                    .subscribe(result => {
+                        this.activateModal.close(true);
+                    });
+            }
         }
     }
 

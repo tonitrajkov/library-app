@@ -9,6 +9,7 @@ import { IUser } from '../../shared/models/user';
 })
 export class UserModalComponent implements OnInit {
     @Input() public userId: number | undefined;
+    public submitted = false;        
     public modalTitle: string = 'Внесување на корисник';
     public user: IUser = {} as IUser;
 
@@ -26,7 +27,10 @@ public getUserById() {
         });
 }
 
-public confirmAction() {
+public confirmAction(isFormValid: boolean) {
+    this.submitted = true;
+    
+        if (isFormValid === true) {
     if (this.userId !== undefined) {
         this.configService.updateUser(this.user)
             .subscribe(result => {
@@ -38,6 +42,7 @@ public confirmAction() {
             .subscribe(result => {
                 this.activateModal.close(true);
             });
+        }
     }
 }
 

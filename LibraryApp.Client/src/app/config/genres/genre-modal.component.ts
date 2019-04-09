@@ -10,6 +10,7 @@ import { IGenre } from '../../shared/models/genre';
 })
 export class GenreModalComponent implements OnInit {
     @Input() public genreId: number | undefined;
+    public submitted = false;
     public modalTitle: string = 'Внесување на жанр';
     public genre: IGenre = {} as IGenre;
     
@@ -29,7 +30,10 @@ export class GenreModalComponent implements OnInit {
             });
     }
 
-    public confirmAction() {
+    public confirmAction(isFormValid: boolean) {
+        this.submitted = true;
+
+        if (isFormValid === true) {
         if (this.genreId !== undefined) {
             this.configService.updateGenre(this.genre)
                 .subscribe(result => {
@@ -41,6 +45,7 @@ export class GenreModalComponent implements OnInit {
                 .subscribe(result => {
                     this.activateModal.close(true);
                 });
+            }
         }
     }
 
