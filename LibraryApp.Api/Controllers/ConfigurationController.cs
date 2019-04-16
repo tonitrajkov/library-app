@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using LibraryApp.Models;
 using LibraryApp.Services.Interfaces;
 using LibraryApp.Common.Exceptions;
+using LibraryApp.Api.Helpers;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace LibraryApp.Api.Controllers
 {
@@ -211,15 +214,26 @@ namespace LibraryApp.Api.Controllers
 
         [Route("user")]
         [HttpPost]
-        public IActionResult AddUser([FromBody] UserModel model)
+        public IActionResult AddUser([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var user = JsonConvert.DeserializeObject<UserModel>(model);
+            if (user == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _userService.AddUser(model);
+            if(file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    user.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _userService.AddUser(user);
             return Ok(true);
         }
 

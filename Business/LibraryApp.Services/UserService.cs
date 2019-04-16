@@ -30,6 +30,21 @@ namespace LibraryApp.Services
         public void AddUser(UserModel model)
         {
             var user = model.ToDomain();
+            //if (model.Roles.Any())
+            //{
+            //    user.Roles = new List<UserRole>();
+            //    foreach (var role in model.Roles)
+            //    {
+            //        var roleDomain = role.ToDomain();
+            //        var userRole = new UserRole
+            //        {
+            //            User = user,
+            //            Role = roleDomain
+            //        };
+            //        user.Roles.Add(userRole);
+            //    }
+            //}
+            
             user.CreatedOn = DateTime.Now;
             user.Password = PasswordHash.CreateHash("123");
 
