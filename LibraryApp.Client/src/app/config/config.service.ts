@@ -78,7 +78,11 @@ export class ConfigService {
     }
 
 
-    public addUser(model: IUser): Observable<any> {
+    public addUser(model: IUser, imageFile: any): Observable<any> {
+        let formData = new FormData();
+        formData.append('model', JSON.stringify(model));
+        formData.append('file', imageFile);
+
         return this.http.post(`${this.apiUrl}/configuration/user`, model);
     }
 

@@ -1,4 +1,5 @@
 export interface IRole {
     id: number;
     title: string;
+    tag: string;
 }

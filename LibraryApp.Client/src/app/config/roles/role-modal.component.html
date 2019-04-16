@@ -7,10 +7,17 @@
     <div class="modal-body">
         <form name="form" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="exampleInputEmail1">Наслов</label>
+                <label>Наслов</label>
                 <input [(ngModel)]="role.title" name="title" type="text" class="form-control" placeholder="Внеси наслов" #title="ngModel" [ngClass]="{ 'is-invalid': submitted && title.invalid }" required>
                 <div *ngIf="submitted && title.invalid" class="invalid-feedback">
                     <div *ngIf="title.errors.required">Полето е задолжително</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Таг</label>
+                <input [(ngModel)]="role.tag" name="tаg" type="text" class="form-control" placeholder="Внеси таг" #tag="ngModel" [ngClass]="{ 'is-invalid': submitted && tag.invalid }" required>
+                <div *ngIf="submitted && tag.invalid" class="invalid-feedback">
+                    <div *ngIf="tag.errors.required">Полето е задолжително</div>
                 </div>
             </div>
         </form>

@@ -12,6 +12,8 @@ export class UserModalComponent implements OnInit {
     public submitted = false;        
     public modalTitle: string = 'Внесување на корисник';
     public user: IUser = {} as IUser;
+    public imageFile: any;
+    public userImgPreview: any;
 
     constructor(private activateModal: NgbActiveModal, private configService: ConfigService) { }
 
@@ -38,7 +40,7 @@ public confirmAction(isFormValid: boolean) {
             });
     }
     else {
-        this.configService.addUser(this.user)
+        this.configService.addUser(this.user, this.imageFile)
             .subscribe(result => {
                 this.activateModal.close(true);
             });
@@ -48,5 +50,16 @@ public confirmAction(isFormValid: boolean) {
 
 public cancelAction() {
     this.activateModal.close(false);
+}
+
+public onFileChange(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+        this.imageFile = event.target.files[0];
+        reader.readAsDataURL(this.imageFile);
+        reader.onload = () => {
+            this.userImgPreview = reader.result;
+        };
+    }
 }
 }

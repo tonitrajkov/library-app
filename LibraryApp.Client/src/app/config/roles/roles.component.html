@@ -11,12 +11,16 @@
             <thead>
                 <tr>
                     <th>Наслов</th>
+                    <th>Таг</th>
                     <th>Акции</th>
                 </tr>
             </thead>
             <tr *ngFor="let role of roles">
                 <td>
                     {{role.title}}
+                </td>
+                <td>
+                    {{role.tag}}
                 </td>
                 <td>
                     <a class="table-action-link" (click)="deleteRole(role)">Избриши </a>

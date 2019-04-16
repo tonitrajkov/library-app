@@ -7,26 +7,26 @@
 <div class="modal-body">
     <form name="form" #f="ngForm" novalidate>
         <div class="form-group">
-            <label for="exampleInputEmail1">Име</label>
+            <label>Име</label>
             <input [(ngModel)]="author.firstName" name="firstName" type="text" class="form-control" placeholder="Внеси име" #firstName="ngModel" [ngClass]="{ 'is-invalid': submitted && firstName.invalid }" required>
             <div *ngIf="submitted && firstName.invalid" class="invalid-feedback">
                 <div *ngIf="firstName.errors.required">Полето е задолжително</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Презиме</label>
+            <label>Презиме</label>
             <input [(ngModel)]="author.lastName" name="lastName" type="text" class="form-control" placeholder="Внеси презиме" #lastName="ngModel" [ngClass]="{ 'is-invalid': submitted && lastName.invalid }" required>
             <div *ngIf="submitted && lastName.invalid" class="invalid-feedback">
                 <div *ngIf="lastName.errors.required">Полето е задолжително</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Биографија</label>
+            <label>Биографија</label>
             <textarea [(ngModel)]="author.biography" name="biography" class="form-control" placeholder="Внеси биографија"
                 rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">URL за слика</label>
+            <label>URL за слика</label>
             <input [(ngModel)]="author.imageUrl" type="text" name="imageUrl" class="form-control" placeholder="Внеси URL">
         </div>
     </form>
