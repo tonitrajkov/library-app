@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using FluentValidation.AspNetCore;
 
 using LibraryApp.Data;
 using LibraryApp.Data.Implementations;
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Services;
 using LibraryApp.Services.Interfaces;
+using LibraryApp.Models.Validators;
+using LibraryApp.Api.Helpers;
 
 namespace LibraryApp.Api
 {
@@ -31,6 +28,7 @@ namespace LibraryApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddMvc().AddFluentValidation();
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",
@@ -42,6 +40,10 @@ namespace LibraryApp.Api
                     });
             });
 
+            // Register Fluent Validators
+            services.RegisterFluentValidators();
+
+            // Setup Entity Framework 
             services.AddDbContext<LibraryAppContext>(
                options =>
                options
@@ -64,6 +66,7 @@ namespace LibraryApp.Api
                 app.UseDeveloperExceptionPage();
             //}
 
+            app.ConfigureCustomExceptionMiddleware();
             app.UseCors("AllowAllOrigins");
             app.UseMvc();
         }

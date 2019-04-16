@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,5 +38,7 @@ namespace LibraryApp.Domain
 
         [Required]
         public DateTime CreatedOn { get; set; }
+
+        public virtual ICollection<UserRole> Roles { get; set; }
     }
 }

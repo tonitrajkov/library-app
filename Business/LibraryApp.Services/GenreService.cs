@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using LibraryApp.Data.Interfaces;
@@ -7,6 +6,7 @@ using LibraryApp.Domain;
 using LibraryApp.Models;
 using LibraryApp.Models.Mapper;
 using LibraryApp.Services.Interfaces;
+using LibraryApp.Common.Exceptions;
 
 namespace LibraryApp.Services
 {
@@ -35,7 +35,7 @@ namespace LibraryApp.Services
         {
             var genre = _genreRepository.GetById(model.Id);
             if (genre == null)
-                throw new Exception("GENRE_DOESNT_EXIST");
+                throw new LibraryObjectNullException("GENRE_DOESNT_EXIST");
 
             genre.Title = model.Title;
             _genreRepository.Update(genre);
@@ -45,7 +45,7 @@ namespace LibraryApp.Services
         {
             var genre = _genreRepository.GetById(genreId);
             if (genre == null)
-                throw new Exception("GENRE_DOESNT_EXIST");
+                throw new LibraryObjectNullException("GENRE_DOESNT_EXIST");
 
             _genreRepository.Delete(genre);
         }
@@ -54,7 +54,7 @@ namespace LibraryApp.Services
         {
             var genre = _genreRepository.GetById(genreId);
             if (genre == null)
-                throw new Exception("GENRE_DOESNT_EXIST");
+                throw new LibraryObjectNullException("GENRE_DOESNT_EXIST");
 
             return genre.ToModel();
         }

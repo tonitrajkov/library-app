@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace LibraryApp.Models
 {
     public class UserModel
@@ -16,5 +18,7 @@ namespace LibraryApp.Models
         public bool IsActive { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public List<RoleModel> Roles { get; set; }
     }
 }

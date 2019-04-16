@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
+using LibraryApp.Common.Exceptions;
 using LibraryApp.Data.Interfaces;
 using LibraryApp.Domain;
 using LibraryApp.Models;
@@ -35,7 +35,7 @@ namespace LibraryApp.Services
         {
             var role = _roleRepository.GetById(model.Id);
             if (role == null)
-                throw new Exception("ROLE_DOESNT_EXIST");
+                throw new LibraryObjectNullException("ROLE_DOESNT_EXIST");
 
             role.Title = model.Title;
             _roleRepository.Update(role);
@@ -45,7 +45,7 @@ namespace LibraryApp.Services
         {
             var role = _roleRepository.GetById(RoleId);
             if (role == null)
-                throw new Exception("ROLE_DOESNT_EXIST");
+                throw new LibraryObjectNullException("ROLE_DOESNT_EXIST");
 
             _roleRepository.Delete(role);
         }
@@ -54,7 +54,7 @@ namespace LibraryApp.Services
         {
             var role = _roleRepository.GetById(roleId);
             if (role == null)
-                throw new Exception("Role_DOESNT_EXIST");
+                throw new LibraryObjectNullException("Role_DOESNT_EXIST");
 
             return role.ToModel();
         }
