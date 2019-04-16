@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from '../../shared/models/user';
 import { ConfigService } from '../config.service';
@@ -10,7 +11,10 @@ import { UserModalComponent } from './user-modal.component';
 export class UsersComponent implements OnInit {
     public users: IUser[];
     
-    constructor(private configService: ConfigService, private modalService: NgbModal) { }
+    constructor(
+        private configService: ConfigService,
+        private modalService: NgbModal,
+        private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {   
          this.loadUsers();
@@ -50,4 +54,9 @@ export class UsersComponent implements OnInit {
             }
         });
     } 
+
+    public getUserImage(imageString: any) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+        + imageString);
+    }
 }

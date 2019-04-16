@@ -26,7 +26,8 @@ import { StarComponent } from './components/star.component';
     FormsModule,
     NgbModule,
     NgbTabsetModule,
-    NgbModalModule
+    NgbModalModule,
+    NgSelectModule
   ]
 })
 export class SharedModule { }

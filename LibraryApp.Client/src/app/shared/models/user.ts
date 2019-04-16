@@ -1,3 +1,5 @@
+import { IRole } from "./role";
+
 export interface IUser {
     id: number;
     firstName: string;
@@ -6,4 +8,5 @@ export interface IUser {
     email: string;
     isActive: boolean;
     imageUrl: string;
+    roles: IRole[];
 }
