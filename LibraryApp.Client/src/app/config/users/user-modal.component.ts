@@ -3,7 +3,7 @@ import { Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfigService } from '../config.service';
 import { IUser } from '../../shared/models/user';
-import { IRole } from 'src/app/shared/models/role';
+import { IRole } from '../../shared/models/role';
 
 @Component({
     templateUrl: './user-modal.component.html',

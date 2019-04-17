@@ -18,8 +18,12 @@ export class ConfigService {
 
     constructor(private http: HttpClient) { }
 
-    public addAuthor(model: IAuthor): Observable<any> {
-        return this.http.post(`${this.apiUrl}/configuration/author`, model );
+    public addAuthor(model: IAuthor, imageFile: any): Observable<any> {
+        let formData = new FormData();
+        formData.append('model', JSON.stringify(model));
+        formData.append('file', imageFile);
+
+        return this.http.post(`${this.apiUrl}/configuration/author`, formData);
     }
 
     public loadAuthors(): Observable<IAuthor[]> {

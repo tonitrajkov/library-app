@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ConfigService } from '../config.service';
 import { IAuthor } from '../../shared/models/author';
+import { IRole } from '../../shared/models/role';
 
 @Component({
     templateUrl: './author-modal.component.html',
@@ -13,6 +14,8 @@ export class AuthorModalComponent implements OnInit {
     public submitted = false;    
     public modalTitle: string = 'Внесување на автор';
     public author: IAuthor = {} as IAuthor;
+    public imageFile: any;
+    public authorImgPreview: any;
 
     constructor(
         private activateModal: NgbActiveModal,
@@ -20,6 +23,7 @@ export class AuthorModalComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        
         if (this.authorId !== undefined) {
             this.modalTitle = 'Промена на автор';
             this.getAuthorById();
@@ -32,7 +36,7 @@ export class AuthorModalComponent implements OnInit {
                 this.author = result;
             });
     }
-
+    
     public confirmAction(isFormValid: boolean) {
         this.submitted = true;
 
@@ -44,7 +48,7 @@ export class AuthorModalComponent implements OnInit {
                     });
             }
             else {
-                this.configService.addAuthor(this.author)
+                this.configService.addAuthor(this.author, this.imageFile)
                     .subscribe(result => {
                         this.activateModal.close(true);
                     });
@@ -54,5 +58,16 @@ export class AuthorModalComponent implements OnInit {
 
     public cancelAction() {
         this.activateModal.close(false);
+    }
+
+    public onFileChange(event) {
+        let reader = new FileReader();
+        if (event.target.files && event.target.files.length > 0) {
+            this.imageFile = event.target.files[0];
+            reader.readAsDataURL(this.imageFile);
+            reader.onload = () => {
+                this.authorImgPreview = reader.result;
+            };
+        }
     }
 }
