@@ -53,7 +53,7 @@ export class UserModalComponent implements OnInit {
                     });
             }
             else {
-                this.user.roles = [];
+                // this.user.roles = [];
                 this.configService.addUser(this.user, this.imageFile)
                     .subscribe(result => {
                         this.activateModal.close(true);

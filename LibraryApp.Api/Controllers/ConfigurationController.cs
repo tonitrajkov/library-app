@@ -46,29 +46,51 @@ namespace LibraryApp.Api.Controllers
 
         [Route("author")]
         [HttpPost]
-        public IActionResult AddAuthor([FromBody] AuthorModel model)
+        public IActionResult AddAuthor([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var author = JsonConvert.DeserializeObject<AuthorModel>(model);
+            if (author == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _authorService.AddAuthor(model);
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    author.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _authorService.AddAuthor(author);
             return Ok(true);
         }
 
         [Route("author")]
         [HttpPut]
-        public IActionResult UpdateAuthor([FromBody] AuthorModel model)
+        public IActionResult UpdateAuthor([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var author = JsonConvert.DeserializeObject<AuthorModel>(model);
+            if (author == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _authorService.UpdateAuthor(model);
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    author.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _authorService.UpdateAuthor(author);
             return Ok(true);
         }
 
@@ -239,15 +261,26 @@ namespace LibraryApp.Api.Controllers
 
         [Route("user")]
         [HttpPut]
-        public IActionResult UpdateUser([FromBody] UserModel model)
+        public IActionResult UpdateUser([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var user = JsonConvert.DeserializeObject<UserModel>(model);
+            if (user == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _userService.UpdateUser(model);
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    user.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _userService.UpdateUser(user);
             return Ok(true);
         }
 
@@ -281,29 +314,51 @@ namespace LibraryApp.Api.Controllers
 
         [Route("book")]
         [HttpPost]
-        public IActionResult AddBook([FromBody] BookModel model)
+        public IActionResult AddBook([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var book = JsonConvert.DeserializeObject<BookModel>(model);
+            if (book == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _bookService.AddBook(model);
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    book.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _bookService.AddBook(book);
             return Ok(true);
         }
 
         [Route("book")]
         [HttpPut]
-        public IActionResult UpdateBook([FromBody] BookModel model)
+        public IActionResult UpdateBook([FromForm] IFormFile file, [FromForm] string model)
         {
-            if (model == null)
+            var book = JsonConvert.DeserializeObject<BookModel>(model);
+            if (book == null)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                throw new InvalidModelStateException(ModelState);
+            //if (!ModelState.IsValid)
+            //    throw new InvalidModelStateException(ModelState);
 
-            _bookService.UpdateBook(model);
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    book.ImageUrl = Convert.ToBase64String(fileBytes);
+                }
+            }
+
+            _bookService.UpdateBook(book);
             return Ok(true);
         }
 

@@ -17,36 +17,53 @@ namespace LibraryApp.Services
         #region Declaration & Ctor
 
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Role> _roleRepository;
 
         public UserService(
-            IRepository<User> userRepository
+            IRepository<User> userRepository,
+            IRepository<Role> roleRepository
             )
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
 
         #endregion
 
         public void AddUser(UserModel model)
         {
+            // check unique username
+            if (_userRepository.GetAll().Any(u =>
+                u.UserName.ToLower() == model.UserName.ToLower()))
+            {
+                throw new LibraryGeneralException("Корисничкото име веќе постои");
+            }
+
+            // check for unique email
+            if (_userRepository.GetAll().Any(u =>
+                u.Email.ToLower() == model.Email.ToLower()))
+            {
+                throw new LibraryGeneralException("Емаилот име веќе постои");
+            }
+
             var user = model.ToDomain();
-            //if (model.Roles.Any())
-            //{
-            //    user.Roles = new List<UserRole>();
-            //    foreach (var role in model.Roles)
-            //    {
-            //        var roleDomain = role.ToDomain();
-            //        var userRole = new UserRole
-            //        {
-            //            User = user,
-            //            Role = roleDomain
-            //        };
-            //        user.Roles.Add(userRole);
-            //    }
-            //}
-            
             user.CreatedOn = DateTime.Now;
             user.Password = PasswordHash.CreateHash("123");
+
+            if (model.Roles.Any())
+            {
+                user.UserRoles = new List<UserRole>();
+                foreach (var roleItem in model.Roles)
+                {
+                    var role = _roleRepository.GetById(roleItem.Id);
+                    var userRole = new UserRole
+                    {
+                        User = user,
+                        Role = role
+                    };
+                    user.UserRoles.Add(userRole);
+                }
+            }
 
             _userRepository.Create(user);
         }
@@ -55,13 +72,42 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(model.Id);
             if (user == null)
-                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("Корисникот не постои");
+
+            // check unique username
+            if (_userRepository.GetAll().Any(u => u.Id != model.Id &&
+                u.UserName.ToLower() == model.UserName.ToLower()))
+            {
+                throw new LibraryGeneralException("Корисничкото име веќе постои");
+            }
+
+            // check for unique email
+            if (_userRepository.GetAll().Any(u => u.Id != model.Id &&
+                u.Email.ToLower() == model.Email.ToLower()))
+            {
+                throw new LibraryGeneralException("Емаилот име веќе постои");
+            }
 
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.UserName = model.UserName;
             user.ImageUrl = model.ImageUrl;
             user.Email = model.Email;
+
+            if (model.Roles.Any())
+            {
+                user.UserRoles = new List<UserRole>();
+                foreach (var roleItem in model.Roles)
+                {
+                    var role = _roleRepository.GetById(roleItem.Id);
+                    var userRole = new UserRole
+                    {
+                        User = user,
+                        Role = role
+                    };
+                    user.UserRoles.Add(userRole);
+                }
+            }
 
             _userRepository.Update(user);
         }
@@ -70,7 +116,7 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
-                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("Корисникот не постои");
 
             _userRepository.Delete(user);
         }
@@ -79,7 +125,7 @@ namespace LibraryApp.Services
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
-                throw new LibraryObjectNullException("USER_DOESNT_EXIST");
+                throw new LibraryObjectNullException("Корисникот не постои");
 
             return user.ToModel();
         }
@@ -88,6 +134,6 @@ namespace LibraryApp.Services
         {
             return _userRepository.GetAll()
                     .Select(u => u.ToModel()).ToList();
-        } 
+        }
     }
 }

@@ -19,6 +19,6 @@ namespace LibraryApp.Domain
         [MaxLength(50)]
         public string Tag { get; set; }
 
-        public virtual ICollection<UserRole> Users { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

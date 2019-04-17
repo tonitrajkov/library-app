@@ -19,13 +19,15 @@ namespace LibraryApp.Data
         {
             modelBuilder.Entity<UserRole>()
             .HasKey(ur => new { ur.UserId, ur.RoleId });
+
             modelBuilder.Entity<UserRole>()
                 .HasOne(ur => ur.User)
-                .WithMany(u => u.Roles)
+                .WithMany(u => u.UserRoles)
                 .HasForeignKey(ur => ur.UserId);
+
             modelBuilder.Entity<UserRole>()
                 .HasOne(ur => ur.Role)
-                .WithMany(r => r.Users)
+                .WithMany(r => r.UserRoles)
                 .HasForeignKey(ur => ur.RoleId);
         }
     }

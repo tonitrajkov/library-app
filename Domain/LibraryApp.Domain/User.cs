@@ -39,6 +39,6 @@ namespace LibraryApp.Domain
         [Required]
         public DateTime CreatedOn { get; set; }
 
-        public virtual ICollection<UserRole> Roles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
