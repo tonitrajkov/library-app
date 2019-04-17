@@ -96,7 +96,7 @@ namespace LibraryApp.Services
 
             if (model.Roles.Any())
             {
-                user.UserRoles = new List<UserRole>();
+                user.UserRoles.Clear();
                 foreach (var roleItem in model.Roles)
                 {
                     var role = _roleRepository.GetById(roleItem.Id);

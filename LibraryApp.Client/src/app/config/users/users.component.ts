@@ -56,7 +56,9 @@ export class UsersComponent implements OnInit {
     } 
 
     public getUserImage(imageString: any) {
-        return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-        + imageString);
+        if(!!imageString){
+            return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+            + imageString);
+        }
     }
 }

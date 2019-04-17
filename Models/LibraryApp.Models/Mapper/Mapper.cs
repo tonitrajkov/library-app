@@ -1,4 +1,6 @@
 ﻿using LibraryApp.Domain;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LibraryApp.Models.Mapper
 {
@@ -64,8 +66,14 @@ namespace LibraryApp.Models.Mapper
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                IsActive = user.IsActive
+                IsActive = user.IsActive,
+                Roles = user.UserRoles.ToRoleModelList()
             };
+        }
+
+        public static List<RoleModel> ToRoleModelList(this IEnumerable<UserRole> userRoles)
+        {
+            return userRoles.Select(r => r.Role.ToModel()).ToList();
         }
 
         #endregion

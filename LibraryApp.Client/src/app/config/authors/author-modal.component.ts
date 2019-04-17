@@ -34,6 +34,7 @@ export class AuthorModalComponent implements OnInit {
         this.configService.getAuthorById(this.authorId)
             .subscribe(result => {
                 this.author = result;
+                this.authorImgPreview = !!this.author.imageUrl ? 'data:image/jpg;base64,' + this.author.imageUrl : '';
             });
     }
     
@@ -42,7 +43,7 @@ export class AuthorModalComponent implements OnInit {
 
         if (isFormValid === true) {
             if (this.authorId !== undefined) {
-                this.configService.updateAuthor(this.author)
+                this.configService.updateAuthor(this.author, this.imageFile)
                     .subscribe(result => {
                         this.activateModal.close(true);
                     });

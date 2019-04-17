@@ -31,6 +31,7 @@ export class UserModalComponent implements OnInit {
         this.configService.getUserById(this.userId)
             .subscribe(result => {
                 this.user = result;
+                this.userImgPreview = !!this.user.imageUrl ? 'data:image/jpg;base64,' + this.user.imageUrl : '';
             });
     }
 
@@ -47,13 +48,12 @@ export class UserModalComponent implements OnInit {
 
         if (isFormValid === true) {
             if (this.userId !== undefined) {
-                this.configService.updateUser(this.user)
+                this.configService.updateUser(this.user,  this.imageFile)
                     .subscribe(result => {
                         this.activateModal.close(true);
                     });
             }
             else {
-                // this.user.roles = [];
                 this.configService.addUser(this.user, this.imageFile)
                     .subscribe(result => {
                         this.activateModal.close(true);

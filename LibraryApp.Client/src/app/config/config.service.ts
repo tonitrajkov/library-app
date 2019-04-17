@@ -34,8 +34,12 @@ export class ConfigService {
         return this.http.delete(`${this.apiUrl}/configuration/author/` + authorId);
     }
 
-    public updateAuthor(model: IAuthor): Observable<any> {
-        return this.http.put(`${this.apiUrl}/configuration/author`, model);
+    public updateAuthor(model: IAuthor, imageFile: any): Observable<any> {
+        let formData = new FormData();
+        formData.append('model', JSON.stringify(model));
+        formData.append('file', imageFile);
+
+        return this.http.put(`${this.apiUrl}/configuration/author`, formData);
     }
 
     public getAuthorById(authorId: number): Observable<IAuthor> {
@@ -98,8 +102,12 @@ export class ConfigService {
         return this.http.delete(`${this.apiUrl}/configuration/user/` + userId);
     }
 
-    public updateUser(model: IUser): Observable<any> {
-        return this.http.put(`${this.apiUrl}/configuration/user`, model);
+    public updateUser(model: IUser, imageFile: any): Observable<any> {
+        let formData = new FormData();
+        formData.append('model', JSON.stringify(model));
+        formData.append('file', imageFile);
+
+        return this.http.put(`${this.apiUrl}/configuration/user`, formData);
     }
     public getUserById(userId: number): Observable<IUser> {
         return this.http.get<IUser>(`${this.apiUrl}/configuration/user/` + userId);
