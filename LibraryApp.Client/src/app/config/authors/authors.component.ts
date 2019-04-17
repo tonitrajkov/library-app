@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthorModalComponent } from './author-modal.component';
@@ -15,7 +16,8 @@ export class AuthorsComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal,
-        private configService: ConfigService
+        private configService: ConfigService,
+        private sanitizer: DomSanitizer
     ) { }
 
     ngOnInit() {
@@ -55,6 +57,11 @@ export class AuthorsComponent implements OnInit {
                 this.loadAuthors();
             }
         });
+    }
+
+    public getAuthorImage(imageString: any) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+        + imageString);
     }
 
 }

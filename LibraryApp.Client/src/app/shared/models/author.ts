@@ -3,5 +3,5 @@ export interface IAuthor {
     firstName: string;
     lastName: string; 
     biography: string;
-    imageUrl: string;
+    imageUrl: string;  
 }

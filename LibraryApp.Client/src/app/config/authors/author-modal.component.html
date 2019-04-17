@@ -26,11 +26,12 @@
                 rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label>URL за слика</label>
-            <input [(ngModel)]="author.imageUrl" type="text" name="imageUrl" class="form-control" placeholder="Внеси URL">
+            <label>Слика од автор</label>
+            <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*">
+            <div>
+            <img *ngIf="authorImgPreview" [src]="authorImgPreview" alt="author picture" style="width:150px; height:150px;">
         </div>
-    </form>
-</div>
+    </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
     <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
