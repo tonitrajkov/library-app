@@ -13,15 +13,17 @@ namespace LibraryApp.Models.Mapper
             return new BookModel
             {
                 Id = book.Id,
-                Author = book.Author,
-                Genre = book.Genre,
                 ImageUrl = book.ImageUrl,
                 OriginalTitle = book.OriginalTitle,
                 PagesNum = book.PagesNum,
                 PublishingHouse = book.PublishingHouse,
                 Rating = book.Rating,
                 Title = book.Title,
-                Description = book.Description
+                Description = book.Description,
+                Authors = book.BookAuthors.ToAuthorModelList(),
+                Genres = book.BookGenres.ToGenreModelList(),
+                Language = book.Language,
+                Isbn = book.ISBN
             };
         }
 
@@ -76,6 +78,16 @@ namespace LibraryApp.Models.Mapper
             return userRoles.Select(r => r.Role.ToModel()).ToList();
         }
 
+        public static List<GenreModel> ToGenreModelList(this IEnumerable<BookGenre> bookGenres)
+        {
+            return bookGenres.Select(g => g.Genre.ToModel()).ToList();
+        }
+
+        public static List<AuthorModel> ToAuthorModelList(this IEnumerable<BookAuthor> bookAuthors)
+        {
+            return bookAuthors.Select(a => a.Author.ToModel()).ToList();
+        }
+
         #endregion
 
 
@@ -86,15 +98,15 @@ namespace LibraryApp.Models.Mapper
             return new Book
             {
                 Id = model.Id,
-                Author = model.Author,
-                Genre = model.Genre,
                 ImageUrl = model.ImageUrl,
                 OriginalTitle = model.OriginalTitle,
                 PagesNum = model.PagesNum,
                 PublishingHouse = model.PublishingHouse,
                 Rating = model.Rating,
                 Title = model.Title,
-                Description = model.Description
+                Description = model.Description,
+                Language = model.Language,
+                ISBN = model.Isbn
             };
         }
 

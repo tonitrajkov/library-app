@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryApp.Domain
@@ -20,5 +21,7 @@ namespace LibraryApp.Domain
         public string Bio { get; set; }
         
         public string Avatar { get; set; }
+
+        public virtual ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }
