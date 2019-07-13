@@ -19,11 +19,12 @@ export class ConfigService {
     constructor(private http: HttpClient) { }
 
     public addAuthor(model: IAuthor, imageFile: any): Observable<any> {
-        let formData = new FormData();
-        formData.append('model', JSON.stringify(model));
-        formData.append('file', imageFile);
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
 
-        return this.http.post(`${this.apiUrl}/configuration/author`, formData);
+        // return this.http.post(`${this.apiUrl}/configuration/author`, formData);
+        return this.http.post(`${this.apiUrl}/configuration/author`, model);
     }
 
     public loadAuthors(): Observable<IAuthor[]> {
@@ -35,11 +36,12 @@ export class ConfigService {
     }
 
     public updateAuthor(model: IAuthor, imageFile: any): Observable<any> {
-        let formData = new FormData();
-        formData.append('model', JSON.stringify(model));
-        formData.append('file', imageFile);
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
 
-        return this.http.put(`${this.apiUrl}/configuration/author`, formData);
+        // return this.http.put(`${this.apiUrl}/configuration/author`, formData);
+        return this.http.put(`${this.apiUrl}/configuration/author`, model);
     }
 
     public getAuthorById(authorId: number): Observable<IAuthor> {
@@ -81,17 +83,18 @@ export class ConfigService {
     public updateRole(model: IRole): Observable<any> {
         return this.http.put(`${this.apiUrl}/configuration/role`, model);
     }
+
     public getRoleById(roleId: number): Observable<IRole> {
         return this.http.get<IRole>(`${this.apiUrl}/configuration/role/` + roleId);
     }
 
-
     public addUser(model: IUser, imageFile: any): Observable<any> {
-        let formData = new FormData();
-        formData.append('model', JSON.stringify(model));
-        formData.append('file', imageFile);
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
 
-        return this.http.post(`${this.apiUrl}/configuration/user`, formData);
+        // return this.http.post(`${this.apiUrl}/configuration/user`, formData);
+        return this.http.post(`${this.apiUrl}/configuration/user`, model);
     }
 
     public loadUsers(): Observable<IUser[]> {
@@ -103,11 +106,12 @@ export class ConfigService {
     }
 
     public updateUser(model: IUser, imageFile: any): Observable<any> {
-        let formData = new FormData();
-        formData.append('model', JSON.stringify(model));
-        formData.append('file', imageFile);
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
 
-        return this.http.put(`${this.apiUrl}/configuration/user`, formData);
+        // return this.http.put(`${this.apiUrl}/configuration/user`, formData);
+        return this.http.put(`${this.apiUrl}/configuration/user`, model);
     }
     public getUserById(userId: number): Observable<IUser> {
         return this.http.get<IUser>(`${this.apiUrl}/configuration/user/` + userId);

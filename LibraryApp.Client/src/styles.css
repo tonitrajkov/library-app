@@ -16,24 +16,19 @@ div.card {
 }
 
 /* ----- Header style ------- */
-header {
-    position: fixed;
-    width: 100%;
-    top:0;
-}
 .header-fixed {
-    height: 100px;
+    height: 60px;
     background-color: #85dcd2;
 }
 
 .header-fixed .logo-icon {
     background-image: url("./assets//images/logo-icon-one.jpg");
     display: block;
-    width: 80px;
-    height: 90px;
+    width: 50px;
+    height: 55px;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-y: 10px;
+    background-position-y: 6px;
 }
 
 .header-fixed .container {
@@ -71,7 +66,7 @@ header {
 
 /* ----- Main container ------- */
 .main-container.container {
-    padding-top: 180px;
+    padding-top: 20px;
     height: 100vh;
 }
 
