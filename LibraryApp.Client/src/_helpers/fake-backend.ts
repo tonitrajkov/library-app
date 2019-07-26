@@ -4,11 +4,12 @@ import { Observable, of, throwError, generate } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 
-import { AUTHORS, GENRES, ROLES, USERS } from './mock.data';
+import { AUTHORS, GENRES, ROLES, USERS, BOOKS } from './mock.data';
 import { IAuthor } from '../app/shared/models/author';
 import { IGenre } from '../app/shared/models/genre';
 import { IRole } from '../app/shared/models/role';
 import { IUser } from '../app/shared/models/user';
+import { IBook } from '../app/shared/models/book';
 
 
 @Injectable()
@@ -18,6 +19,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     public genres: IGenre[] = GENRES;
     public roles: IRole[] = ROLES;
     public users: IUser[] = USERS;
+    public books: IBook[] = BOOKS;
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -64,6 +66,60 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                                 let index = this.authors.indexOf(author, 0);
                                 if (index !== -1) {
                                     this.authors.splice(index, 1);
+                                }
+                            }
+
+                            return of(new HttpResponse({ status: 200 }));
+                        }
+                        break;
+                }
+            }
+
+            // books api
+            if (request.url.indexOf('/api/configuration/book') !== -1) {
+                let urlParts = request.url.split('/');
+                let bookId = parseInt(urlParts[urlParts.length - 1]);
+
+                switch (request.method) {
+                    case 'GET':
+                        if (bookId) {
+                            // get book by Id
+                            let book = this.getBookById(bookId, true);
+                            return of(new HttpResponse({ status: 200, body: book }));
+                        }
+                        else {
+                            // get all books
+                            return of(new HttpResponse({ status: 200, body: this.books }));
+                        }
+                    case 'POST': // add new book
+                        let newBook = <IBook>request.body;
+                        newBook.id = this.generateId(this.books.map(book => book.id));
+                        this.books.push(newBook);
+
+                        return of(new HttpResponse({ status: 200 }));
+                    case 'PUT':
+                        let model = <IBook>request.body;
+                        let book = this.getBookById(model.id, false);
+                        if (book) {
+                            book.title = model.title;
+                            book.originalTitle = model.originalTitle;
+                            book.author = model.author;
+                            book.genre = model.genre;
+                            book.publishingHouse = model.publishingHouse;
+                            book.pagesNum = model.pagesNum;
+                            book.rating = model.rating;
+                            book.description = model.description;
+                            book.imageUrl = model.imageUrl;
+                        }
+
+                        return of(new HttpResponse({ status: 200 }));
+                    case 'DELETE':
+                        if (bookId) {
+                            let book = this.getBookById(bookId, false);
+                            if (book) {
+                                let index = this.books.indexOf(book, 0);
+                                if (index !== -1) {
+                                    this.books.splice(index, 1);
                                 }
                             }
 
@@ -237,6 +293,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         return makeCopy ? this.copyObject<IAuthor>(author) : author;
+    }
+
+    public getBookById(bookId: number, makeCopy: boolean): IBook {
+        let book = this.books.filter(book => { return book.id === bookId; })[0];
+
+        if (!book) {
+            return {} as IBook;
+        }
+
+        return makeCopy ? this.copyObject<IBook>(book) : book;
     }
 
     public getGenreById(genreId: number, makeCopy: boolean): IGenre {

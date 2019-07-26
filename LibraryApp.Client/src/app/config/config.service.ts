@@ -10,6 +10,7 @@ import { IAuthor } from '../shared/models/author';
 import { IGenre } from '../shared/models/genre';
 import { IRole } from "../shared/models/role";
 import { IUser } from '../shared/models/user';
+import { IBook } from '../shared/models/book';
 
 
 @Injectable()
@@ -46,6 +47,32 @@ export class ConfigService {
 
     public getAuthorById(authorId: number): Observable<IAuthor> {
         return this.http.get<IAuthor>(`${this.apiUrl}/configuration/author/` + authorId);
+    }
+
+    public addBook(model: IBook, imageFile: any): Observable<any> {
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
+
+        // return this.http.post(`${this.apiUrl}/configuration/book`, formData);
+        return this.http.post(`${this.apiUrl}/configuration/book`, model);
+    }
+    public loadBooks(): Observable<IBook[]> {
+        return this.http.get<IBook[]>(`${this.apiUrl}/configuration/book`);
+    }
+    public deleteBook(bookId: number): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/configuration/book/` + bookId);
+    }
+    public updateBook(model: IBook, imageFile: any): Observable<any> {
+        // let formData = new FormData();
+        // formData.append('model', JSON.stringify(model));
+        // formData.append('file', imageFile);
+
+        // return this.http.put(`${this.apiUrl}/configuration/book`, formData);
+        return this.http.put(`${this.apiUrl}/configuration/book`, model);
+    }
+    public getBookById(bookId: number): Observable<IBook> {
+        return this.http.get<IBook>(`${this.apiUrl}/configuration/book/` + bookId);
     }
 
     public addGenre(model: IGenre): Observable<any> {

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { OnInit } from "@angular/core";
 
-import { IBook } from "../book";
+import { IBook } from "../../shared/models/book";
 import { BookService } from "../book.service";
 
 @Component({

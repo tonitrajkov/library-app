@@ -6,7 +6,7 @@ import { HttpErrorResponse } from "@angular/common/http/src/response";
 import { throwError } from "rxjs/internal/observable/throwError";
 
 import { environment } from '../../environments/environment';
-import { IBook } from "src/app/books/book";
+import { IBook } from "../shared/models/book";
 
 
 @Injectable({

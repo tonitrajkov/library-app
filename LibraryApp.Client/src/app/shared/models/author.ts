@@ -4,4 +4,5 @@ export interface IAuthor {
     lastName: string; 
     biography: string;
     imageUrl: string;  
+    fullName: string;
 }

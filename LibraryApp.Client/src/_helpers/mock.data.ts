@@ -2,6 +2,7 @@ import { IAuthor } from '../app/shared/models/author';
 import { IGenre } from '../app/shared/models/genre';
 import { IRole } from '../app/shared/models/role';
 import { IUser } from '../app/shared/models/user';
+import { IBook } from '../app/shared/models/book';
 
 
 // Authors
@@ -11,37 +12,45 @@ export const AUTHORS: IAuthor[] = [
         firstName: 'Kristin',
         lastName: 'Hannah',
         biography: 'Kristin`s bio',
-        imageUrl: ''
+        imageUrl: '',
+        fullName: 'Kristin Hannah'
     },
     {
         id: 2,
         firstName: 'Chevy',
         lastName: 'Stevens',
         biography: 'Stevens biography it is not available',
-        imageUrl: ''
+        imageUrl: '',
+        fullName: 'Chevy Stevens'
     },
     {
         id: 3,
         firstName: 'Khaled',
         lastName: 'Hosseini',
         biography: '',
-        imageUrl: ''
+        imageUrl: '',
+        fullName: 'Khaled Hosseini'
     },
     {
         id: 4,
         firstName: 'Sarah',
         lastName: 'Gio',
         biography: 'Sarah Gio is author of 8 best sellers',
-        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2017/10/sarah-sidebar2-345x425.png'
+        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2017/10/sarah-sidebar2-345x425.png',
+        fullName: 'Sarah Gio'
     },
     {
         id: 5,
         firstName: 'Jonh',
         lastName: 'Green',
         biography: '',
-        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/john-green-2.jpg'
+        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/john-green-2.jpg',
+        fullName: 'John Green'
     }
 ];
+
+//Books
+export const BOOKS: IBook[] = [];
 
 
 // Genres
