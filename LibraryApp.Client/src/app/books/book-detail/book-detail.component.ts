@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
-import { BookService } from "src/app/books/book.service";
-import { IBook } from 'src/app/books/book';
+import { IBook } from '../../shared/models/book';
+import { BookService } from "../book.service";
 
 @Component({
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  templateUrl: './book-detail.component.html'
 })
 export class BookDetailComponent implements OnInit {
   pageTitle: string = 'Book Detail';

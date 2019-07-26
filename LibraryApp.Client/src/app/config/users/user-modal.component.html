@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Затвори" (click)="cancelAction()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form name="form" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label>Име</label>
+            <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="Внеси име" #firstName="ngModel" [ngClass]="{ 'is-invalid': submitted && firstName.invalid }" required>
+            <div *ngIf="submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Презиме</label>
+            <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Внеси презиме" #lastName="ngModel" [ngClass]="{ 'is-invalid': submitted && lastName.invalid }" required>
+            <div *ngIf="submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Корисничко име</label>
+            <input [(ngModel)]="user.userName" name="userName" type="text" class="form-control" placeholder="Внеси корисничко име" #userName="ngModel" [ngClass]="{ 'is-invalid': submitted && userName.invalid }" required>
+            <div *ngIf="submitted && userName.invalid" class="invalid-feedback">
+                <div *ngIf="userName.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Емаил адреса</label>
+            <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Внеси email адреса" #email="ngModel" [ngClass]="{ 'is-invalid': submitted && email.invalid }" required>
+            <div *ngIf="submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+                <label>Профилна слика</label>
+                <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*">
+                <div>
+                <img *ngIf="userImgPreview" [src]="userImgPreview" alt="profile picture" style="width:150px; height:150px;">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="">
+              <input type="checkbox" [(ngModel)]="user.isActive" name="isActive" > Активен
+            </label>
+          </div>
+        <div class="form-group">
+                <ng-select [items]="roles"
+                    name="roles"
+                    bindLabel="title" 
+                    [multiple]="true"
+                    placeholder="Избери улоги"
+                    [(ngModel)]="user.roles">
+                </ng-select>
+          </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
+    <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
+</div>

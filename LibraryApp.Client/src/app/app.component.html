@@ -1,6 +1,32 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to Library!
-  </h1>
-</div>
+<header>
+    <div class="header-fixed">
+        <div class='container'>
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="logo-icon"></span>
+                </div>
+                <div class="col-md-6">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class='container'>
+            <nav class='navbar justify-content-center'>
+                <ul class='nav'>
+                    <li><a class='nav-link' routerLinkActive="active" [routerLink]="['/welcome']">Почетна</a></li>
+                    <li><a class='nav-link' routerLinkActive="active" [routerLink]="['/books']">Книги</a></li>
+                    <li><a class='nav-link' routerLinkActive="active">Новости</a></li>
+                    <li><a class='nav-link' routerLinkActive="active">За нас</a></li>
+                    <li><a class='nav-link' routerLinkActive="active" [routerLink]="['/config']">Конфигурација</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
 
+
+<div class='container main-container'>
+    <router-outlet></router-outlet>
+</div>

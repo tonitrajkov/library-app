@@ -1,0 +1,48 @@
+<div class="filter-container row">
+    <div class="col-md-6 filter-container">
+
+    </div>
+    <div class="col-md-6 action-btn-container">
+        <button (click)="addBook()" class="btn action-btn btn-sm">Внеси книга</button>
+    </div>
+</div>
+<div class="list-container">
+    <table class='table table-hover'>
+        <thead>
+            <tr>
+                <th>Слика</th>
+                <th>Наслов</th>
+                <th>Автор</th>
+                <th>Жанр</th>
+                <th>Издавачка куќа</th>
+                <th>Број на страници</th>
+                <th>Акции</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let book of books">
+            <td>
+                <!-- <img [src]="getBookImage(book.imageUrl)" alt="book picture" style="width:150px; height:150px;"> -->
+                
+            </td>
+            <td>
+                {{book.title}}
+            </td>
+            <td>
+                {{book.author}}
+            </td>
+            <td>
+                {{book.genre}}
+            </td>
+            <td>
+                {{book.publishingHouse}}
+            </td>
+            <td>
+                {{book.pagesNum}}
+            </td>
+            <td>
+                <a class="table-action-link" (click)="deleteBook(book)">Избриши </a>
+                <a class="table-action-link" (click)="updateBook(book)">Промени </a>
+            </td>
+        </tr>
+    </table>
+</div>

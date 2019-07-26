@@ -6,7 +6,7 @@ import { HttpErrorResponse } from "@angular/common/http/src/response";
 import { throwError } from "rxjs/internal/observable/throwError";
 
 import { environment } from '../../environments/environment';
-import { IBook } from "src/app/books/book";
+import { IBook } from "../shared/models/book";
 
 
 @Injectable({
@@ -32,7 +32,6 @@ export class BookService {
     getBook(bookId: string): Observable<IBook> {
         return this.http.get<IBook>(`${this.apiUrl}/book/${bookId}`);
     }
-
 
     private handleError(err: HttpErrorResponse) {
         let errorMessage = '';

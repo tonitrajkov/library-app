@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+// modules
+import { SharedModule } from '../shared/shared.module';
+
+// services
+import { BookDetailGuard } from './book-detail/book-detail.guard';
+
+// components
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { RouterModule } from '@angular/router';
-import { BookDetailGuard } from './book-detail/book-detail.guard';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [

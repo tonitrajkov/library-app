@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Затвори" (click)="cancelAction()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form name="form" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label>Име</label>
+            <input [(ngModel)]="author.firstName" name="firstName" type="text" class="form-control" placeholder="Внеси име" #firstName="ngModel" [ngClass]="{ 'is-invalid': submitted && firstName.invalid }" required>
+            <div *ngIf="submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Презиме</label>
+            <input [(ngModel)]="author.lastName" name="lastName" type="text" class="form-control" placeholder="Внеси презиме" #lastName="ngModel" [ngClass]="{ 'is-invalid': submitted && lastName.invalid }" required>
+            <div *ngIf="submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Биографија</label>
+            <textarea [(ngModel)]="author.biography" name="biography" class="form-control" placeholder="Внеси биографија"
+                rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Слика од автор</label>
+            <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*">
+            <div>
+            <img *ngIf="authorImgPreview" [src]="authorImgPreview" alt="author picture" style="width:150px; height:150px;">
+        </div>
+    </div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
+    <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
+</div>
