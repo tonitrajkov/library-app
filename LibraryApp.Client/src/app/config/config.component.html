@@ -1,39 +1,37 @@
-<div class="page-title">
-    <span>Конфигурација</span>
-</div>
-
-<div class="tab-container">
-    <ngb-tabset>
-        <ngb-tab>
-            <ng-template ngbTabTitle routerLinkActive="active">
-                <a [routerLink]="['authors']">Автори</a>
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab>
-        <ng-template ngbTabTitle routerLinkActive="active">
-            <a [routerLink]="['genres']">Жанрови</a>
-        </ng-template>    
-        </ngb-tab> 
-        <ngb-tab>
+<div class='la-container config-container'>
+    <div class="tab-container">
+        <ngb-tabset>
+            <ngb-tab>
                 <ng-template ngbTabTitle routerLinkActive="active">
-                        <a [routerLink]="['roles']">Улоги</a>
-                    </ng-template>       
-        </ngb-tab>       
-        <ngb-tab>
-            <ng-template ngbTabTitle routerLinkActive="active">
-                <a [routerLink]="['books']">Книги</a>
-            </ng-template>   
-        </ngb-tab>
-        <ngb-tab >
-            <ng-template ngbTabTitle routerLinkActive="active">
-                <a [routerLink]="['users']">Корисници</a>
-            </ng-template>
-        </ngb-tab>
-    </ngb-tabset>
-</div>
+                    <a [routerLink]="['authors']">Автори</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['genres']">Жанрови</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['roles']">Улоги</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['books']">Книги</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['users']">Корисници</a>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
 
-<div class="config-page">
-    <div class="content">
-        <router-outlet></router-outlet>
+    <div class="config-page">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>

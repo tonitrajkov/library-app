@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbModule, NgbTabsetModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { RouterModule } from '@angular/router';
 
 // components
 import { StarComponent } from './components/star.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -14,14 +17,19 @@ import { StarComponent } from './components/star.component';
     NgbTabsetModule,
     NgbModalModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [
     StarComponent,
+    HeaderComponent,
+    FooterComponent
 
   ],
   exports: [
     StarComponent,
+    HeaderComponent,
+    FooterComponent,
     CommonModule,
     FormsModule,
     NgbModule,

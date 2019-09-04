@@ -5,8 +5,7 @@ import { IBook } from "../../shared/models/book";
 import { BookService } from "../book.service";
 
 @Component({
-    templateUrl: './book-list.component.html',
-    styleUrls: ['./book-list.component.css']
+    templateUrl: './book-list.component.html'
 })
 
 export class BookListComponent implements OnInit {

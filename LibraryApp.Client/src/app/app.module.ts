@@ -6,21 +6,21 @@ import { RouterModule } from '@angular/router';
 import { fakeBackendProvider } from '../_helpers/fake-backend';
 
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './books/welcome.component';
+import { HomeComponent } from './home/home.component';
 import { BookModule } from './books/book.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       { path: 'config', loadChildren: './config/config.module#ConfigModule' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
     ]),
