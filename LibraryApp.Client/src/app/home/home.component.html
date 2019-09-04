@@ -1,0 +1,102 @@
+<div class='la-container landing-page'>
+    <section class='app-info'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='text-container'>
+                    <h1>
+                        Hudge library
+                        <span>in your mind</span>
+                    </h1>
+                    <div class='text-list-container'>
+                        <div class='row'>
+                            <div class='col-md-2'></div>
+                            <div class='col-md-10'>
+                                <label>Check the books in our library</label>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-2'></div>
+                            <div class='col-md-10'>
+                                <label>Check the books in our library</label>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-2'></div>
+                            <div class='col-md-10'>
+                                <label>Check the books in our library</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='btn-container'>
+                    <button class='btn app-info-btn'> LEARN MORE
+
+                    </button>
+
+                </div>
+
+            </div>
+            <div class='col-md-6'>
+                <object type="image/svg+xml" data="../../../assets/images/illustrations/girl-reading-book.svg" class="max-width-illustration">
+                </object>
+            </div>
+        </div>
+    </section>
+
+    <section class='top-books'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='text-container text-center'>
+                    <h1>
+                        Top 3 books
+                        <span>of the year</span>
+                    </h1>
+                </div>
+            </div>
+            <div class='col-md-12 top-book-delimiter' *ngFor="let book of books; let i = index">
+                <div class='row' >
+                    <div class='col-md-9'>
+                        <span class='top-book-title'>{{i+1}}. {{book.title}}</span>
+                    </div>
+                    <div class='col-md-3'>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <img  [src]='book.imageUrl' class='top-book-image'>
+                    </div>
+                    <div class='col-md-9'>
+                        <span class='top-book-author'>
+                            {{getAuthors(book.author)}}
+                        </span>
+                        <p class='top-book-resume'>
+                            {{book.description}}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class='subsrcibe-section'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='text-container text-center'>
+                    <h1>
+                        Subscribe to our
+                        <span>newsletter</span>
+                    </h1>
+                </div>
+                <div class='input-form-container text-center'>
+                    <input type='text' placeholder="E-MAIL" class='subscribe-input'>
+                    <button class='btn app-subscribe-btn'> SUBSCRIBE </button>
+                        
+                </div>
+            </div>
+        </div>
+    </section>
+   
+</div>

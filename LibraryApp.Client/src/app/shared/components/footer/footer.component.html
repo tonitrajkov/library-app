@@ -1,0 +1,34 @@
+<div class='footer'>
+    <div class='la-container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='footer-menu-container' *ngIf="showFooterDetails">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class='nav-link' routerLinkActive="active" [routerLink]="['/home']">Почетна</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' routerLinkActive="active" [routerLink]="['/books']">Книги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' routerLinkActive="active">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' routerLinkActive="active">За нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' routerLinkActive="active" [routerLink]="['/config']">Конфигурација</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class='footer-img-container' *ngIf="showFooterDetails">
+                    <a class='footer-img-left'></a>
+                    <!-- <a class='footer-img-right'></a> -->
+                </div>
+                <div class='footer-social-container text-center'>
+                    <span>Copyright to Irena Ristovska</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

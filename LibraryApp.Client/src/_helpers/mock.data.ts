@@ -50,8 +50,75 @@ export const AUTHORS: IAuthor[] = [
 ];
 
 //Books
-export const BOOKS: IBook[] = [];
-
+export const BOOKS: IBook[] = [
+    {
+        id: 1,
+        title: "Славејот",
+        originalTitle: "The Nightingale",
+        author: <IAuthor[]> [{
+            id: 1,
+            firstName: 'Kristin',
+            lastName: 'Hannah',
+            biography: 'Kristin`s bio',
+            imageUrl: '',
+            fullName: 'Kristin Hannah'
+        }],
+        genre: <IGenre[]>[ {
+            id: 1,
+            title: 'Romance'
+        }],
+        publishingHouse: "Sakam Knigi",
+        pagesNum: 415,
+        rating: 4.56,
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        imageUrl: "http://sakamknigi.mk/wp-content/uploads/2015/09/11.jpg"
+    },
+    {
+        id: 2,
+        title: "Никогаш не се знае",
+        originalTitle: "Never Knowing",
+        author: <IAuthor[]> [{
+            id: 2,
+            firstName: 'Chevy',
+            lastName: 'Stevens',
+            biography: 'Stevens biography it is not available',
+            imageUrl: '',
+            fullName: 'Chevy Stevens'
+        }],
+        genre: <IGenre[]>[ {
+            id: 2,
+            title: 'Thriller'
+        }],
+        publishingHouse: "Sakam Knigi",
+        pagesNum: 367,
+        rating: 3.86,
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        imageUrl: "http://www.kniga.mk/media/catalog/product/cache/3/image/265x265/17f82f742ffe127f42dca9de82fb58b1/n/i/nikogas_ne_se_znae.jpg"
+    },
+    {
+        id: 3,
+        title: "И планините одекнаа",
+        originalTitle: "And The Mountains Echoed",
+        author: <IAuthor[]> [{
+            id: 3,
+            firstName: 'Khaled',
+            lastName: 'Hosseini',
+            biography: '',
+            imageUrl: '',
+            fullName: 'Khaled Hosseini'
+        }],
+        genre: <IGenre[]>[ {
+            id: 3,
+            title: 'Mystery'
+        }],
+        publishingHouse: "Matica",
+        pagesNum: 393,
+        rating: 4.04,
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        imageUrl: "http://sakamknigi.mk/portal/media/k2/items/cache/a4e782ff58c2efaa0c9218e717493fa6_S.jpg?t=-62169984000"
+    },
+    
+];
 
 // Genres
 export const GENRES: IGenre[] = [

@@ -76,7 +76,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
 
             // books api
-            if (request.url.indexOf('/api/configuration/book') !== -1) {
+            if (request.url.indexOf('/api/configuration/book') !== -1
+                || request.url.indexOf('/api/book') !== -1) {
                 let urlParts = request.url.split('/');
                 let bookId = parseInt(urlParts[urlParts.length - 1]);
 
