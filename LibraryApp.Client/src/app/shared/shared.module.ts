@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+// modules
 import { NgbModule, NgbTabsetModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import { StarComponent } from './components/star.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+
+library.add(fas);
 
 @NgModule({
   imports: [
@@ -18,7 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModalModule,
     NgSelectModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ],
   declarations: [
     StarComponent,
@@ -35,7 +43,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModule,
     NgbTabsetModule,
     NgbModalModule,
-    NgSelectModule
+    NgSelectModule,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }
