@@ -60,10 +60,10 @@ export class AuthorsComponent implements OnInit {
     }
 
     public getAuthorImage(imageString: any) {
-        if(!!imageString){
-            return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-            + imageString);
+        if(imageString) {
+            return imageString;
         }
+        return "./assets/images/no-avatar.png"
     }
 
 }

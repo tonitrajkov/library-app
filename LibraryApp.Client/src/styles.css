@@ -254,6 +254,54 @@ header .la-container {
     text-decoration: underline !important;
 }
 
+.config-action-btn{
+    border-radius: 15px;
+    font-size: 13px;
+    padding: 5px 25px;
+    background-color: #723182;
+    color: #fff3dc;
+    font-weight: 500;
+}
+
+.table.config-table th {
+    border-top: 0;
+    font-weight: 500;
+    color: #818181;
+    font-size: 14px;
+    border-bottom-width: 1px;
+}
+
+.flex-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.details-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: center;
+}
+
+.details-container h4 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.details-container p {
+    color: #929292;
+    margin: 0;
+    font-size: 12px;
+}
+
 /* ----- Book List Style ------- */
 
 .card .card-header {

@@ -3,30 +3,29 @@
 
     </div>
     <div class="col-md-6 action-btn-container">
-        <button (click)="addAuthor()" class="btn action-btn btn-sm">Внеси автор</button>
+        <button (click)="addAuthor()" class="btn config-action-btn">Нов автор</button>
     </div>
 </div>
 <div class="list-container">
-    <table class='table table-hover'>
+    <table class='table table-hover config-table'>
         <thead>
             <tr>
-                <th>Слика</th>
                 <th>Име</th>
-                <th>Презиме</th>
                 <th>Биографија</th>
-                <th>Акции</th>
+                <th>Акции</th>x
             </tr>
         </thead>
         <tr *ngFor="let author of authors">
             <td>
-                <!-- <img [src]="getAuthorImage(author.imageUrl)" alt="author picture" style="width:150px; height:150px;"> -->
-                
-            </td>
-            <td>
-                {{author.firstName}}
-            </td>
-            <td>
-                {{author.lastName}}
+                <div class='flex-box'>
+                    <div class='avatar-container'>
+                        <img [src]="getAuthorImage(author.imageUrl)" class='avatar'>
+                    </div>
+                    <div class='details-container'>
+                        <h4>{{author.firstName}}  {{author.lastName}}</h4>
+                    </div>
+                </div>
+
             </td>
             <td>
                 {{author.biography}}
