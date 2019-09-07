@@ -3,16 +3,18 @@
     
         </div>
         <div class="col-md-6 action-btn-container">
-            <button (click)="addRole()" class="btn action-btn btn-sm">Внеси улога</button>
+            <button (click)="addRole()" class="btn config-action-btn">Нова улога
+                 <fa-icon [icon]="['fas', 'plus']" size="sm" ></fa-icon>
+            </button>
         </div>
     </div>
     <div class="list-container">
-        <table class='table table-hover'>
+        <table class='table table-hover config-table'>
             <thead>
                 <tr>
                     <th>Наслов</th>
                     <th>Таг</th>
-                    <th>Акции</th>
+                    <th class="config-table-action-holder">Акции</th>
                 </tr>
             </thead>
             <tr *ngFor="let role of roles">
@@ -22,9 +24,21 @@
                 <td>
                     {{role.tag}}
                 </td>
-                <td>
-                    <a class="table-action-link" (click)="deleteRole(role)">Избриши </a>
-                    <a class="table-action-link" (click)="updateRole(role)">Промени </a>
+                <td class='table-actions-container'>
+                        <ng-template #actionsContent>
+                            <ul class='popover-actions-menu'>
+                                <li class='popover-actions-item' (click)="updateRole(role); p.close()">
+                                        <span> Промени </span>
+                                </li>
+                                <li class='popover-actions-item' (click)="deleteRole(role); p.close()">
+                                     <span> Избриши </span>
+                                </li>
+                            </ul>
+                        </ng-template>
+                    <a class='icon-action' [ngbPopover]="actionsContent" placement="bottom" #p="ngbPopover">
+                            <fa-icon [icon]="['fas', 'ellipsis-v']" [classes]="['my-icon-class']"></fa-icon>
+                            
+                    </a>
                 </td>
             </tr>
         </table>

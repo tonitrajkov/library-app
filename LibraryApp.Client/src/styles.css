@@ -9,8 +9,12 @@ p {
 }
 body {
     color: #0a1530;
+    position: relative;
 }
 
+html, body {
+    height: 100%;
+}
 
 div.card-header {
     font-size: large;
@@ -226,10 +230,13 @@ header .la-container {
 .config-container .tab-container .nav .nav-link {
     border: 0;
     cursor: default;
+    padding: 0;
 }
 
 .config-container .tab-container .nav .nav-link a {
     color: #723182;
+    padding: .5rem 1rem;
+    display: block;
 }
 
 .config-container .tab-container .nav .nav-link a:hover {
@@ -263,12 +270,24 @@ header .la-container {
     font-weight: 500;
 }
 
+.config-action-btn fa-icon {
+    margin-left: 5px;
+}
+
 .table.config-table th {
     border-top: 0;
     font-weight: 500;
     color: #818181;
     font-size: 14px;
     border-bottom-width: 1px;
+}
+
+.config-table-action-holder {
+    width: 1%;
+}
+
+.table.config-table th, .table.config-table td {
+    border-color: #ebedef;
 }
 
 .flex-box {
@@ -302,6 +321,42 @@ header .la-container {
     font-size: 12px;
 }
 
+.icon-action {
+    padding: 3px 10px;
+}
+
+.icon-action:hover {
+    cursor: pointer;
+}
+
+.popover-actions-menu {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.table-actions-container {
+    vertical-align: middle;
+}
+
+.table-actions-container .popover-body {
+    padding: 0;
+    margin: 0;
+}
+
+.popover-actions-item {
+    padding: 5px 10px;
+}
+
+.popover-actions-item:hover {
+    background-color: #f5eeee;
+    cursor: pointer;
+}
+
+.custom-file-label.browse-custom-label::after {
+    content: "Пребарај" !important;
+}
+
 /* ----- Book List Style ------- */
 
 .card .card-header {
@@ -324,23 +379,24 @@ header .la-container {
 }
 
 .btn.btn-primary {
-    background-color: #85dcd2;
-    color: #ef1d24;
-    font-weight: 500;
+    background-color: #723182;
+    color: #fff3dc;
+    font-weight: 400;
     border: none;
 }
 
 .btn.btn-primary:hover {
-    background-color: #7ef5e7;
-    color: #d20c0c;
+    opacity: 0.8;
     border: none;
 }
 
-/*.btn.btn-primary:active {
-    background-color: #348a80;
-    border: none;
-    color: #860000;
-}*/
+.btn.btn-primary:focus  {
+    outline: none !important;
+ }
+ .btn.btn-primary:active {
+     outline: none !important;
+     border: none !important;
+ } 
 
 .table-head .th{
     color: #ef1d24;
