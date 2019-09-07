@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IGenre } from '../../shared/models/genre';
 import { ConfigService } from '../config.service';
 import { GenreModalComponent } from './genre-modal.component';
+import { WarningDialogComponent } from '../../shared/dialogs/warning-dialog.component';
 
 
 @Component({
@@ -20,12 +21,18 @@ export class GenresComponent implements OnInit {
      }
 
     public deleteGenre(genre: IGenre) {
-        this.configService.deleteGenre(genre.id)
-        .subscribe(result => {
-            if (result) {
-                this.loadGenres();
+        const modalRef = this.modalService.open(WarningDialogComponent, { size: 'sm' });
+
+        modalRef.result.then((result) => {
+            if (result == true) {
+                this.configService.deleteGenre(genre.id)
+                .subscribe(result => {
+                    if (result) {
+                        this.loadGenres();
+                    }
+                });
             }
-        })
+        });
     }
 
     public updateGenre(genre: IGenre) {

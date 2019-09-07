@@ -3,30 +3,31 @@
 
     </div>
     <div class="col-md-6 action-btn-container">
-        <button (click)="addUser()" class="btn action-btn btn-sm">Внеси корисник</button>
+        <button (click)="addUser()" class="btn config-action-btn">Нов корисник
+                <fa-icon [icon]="['fas', 'plus']" size="sm" ></fa-icon>
+        </button>
     </div>
 </div>
 <div class="list-container">
-    <table class='table table-hover'>
+    <table class='table table-hover config-table'>
         <thead>
             <tr>
                 <th>Слика</th>
-                <th>Име</th>
-                <th>Презиме</th>
                 <th>Корисничко име</th>
                 <th>Емаил адреса</th>
-                <th>Акции</th>
+                <th class="config-table-action-holder">Акции</th>
             </tr>
         </thead>
         <tr *ngFor="let user of users">
             <td>
-                    <!-- <img [src]="getUserImage(user.imageUrl)" alt="profile picture" style="width:150px; height:150px;"> -->
-            </td>
-            <td>
-                {{user.firstName}}
-            </td>
-            <td>
-                {{user.lastName}} 
+                    <div class='flex-box'>
+                            <div class='avatar-container'>
+                                <img [src]="getUserImage(user.imageUrl)" class='avatar'>
+                            </div>
+                            <div class='details-container'>
+                                <h4>{{user.firstName}}  {{user.lastName}}</h4>
+                            </div>
+                        </div>
             </td>
             <td>
                 {{user.userName}}
@@ -34,9 +35,21 @@
             <td>
                 {{user.email}}
             </td>
-            <td>
-                <a class="table-action-link" (click)="deleteUser(user)">Избриши </a>
-                <a class="table-action-link" (click)="updateUser(user)">Промени </a>
+            <td class='table-actions-container'>
+                    <ng-template #actionsContent>
+                        <ul class='popover-actions-menu'>
+                            <li class='popover-actions-item' (click)="updateUser(user); p.close()">
+                                    <span> Промени </span>
+                            </li>
+                            <li class='popover-actions-item' (click)="deleteUser(user); p.close()">
+                                 <span> Избриши </span>
+                            </li>
+                        </ul>
+                    </ng-template>
+                <a class='icon-action' [ngbPopover]="actionsContent" placement="bottom" #p="ngbPopover">
+                        <fa-icon [icon]="['fas', 'ellipsis-v']" [classes]="['my-icon-class']"></fa-icon>
+                        
+                </a>
             </td>
         </tr>
     </table>

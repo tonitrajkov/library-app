@@ -55,7 +55,7 @@ export const BOOKS: IBook[] = [
         id: 1,
         title: "Славејот",
         originalTitle: "The Nightingale",
-        author: <IAuthor[]> [{
+        authors: <IAuthor[]> [{
             id: 1,
             firstName: 'Kristin',
             lastName: 'Hannah',
@@ -63,9 +63,9 @@ export const BOOKS: IBook[] = [
             imageUrl: '',
             fullName: 'Kristin Hannah'
         }],
-        genre: <IGenre[]>[ {
+        genres: <IGenre[]>[{
             id: 1,
-            title: 'Romance'
+             title: 'Romance'
         }],
         publishingHouse: "Sakam Knigi",
         pagesNum: 415,
@@ -77,7 +77,7 @@ export const BOOKS: IBook[] = [
         id: 2,
         title: "Никогаш не се знае",
         originalTitle: "Never Knowing",
-        author: <IAuthor[]> [{
+        authors: <IAuthor[]> [{
             id: 2,
             firstName: 'Chevy',
             lastName: 'Stevens',
@@ -85,9 +85,13 @@ export const BOOKS: IBook[] = [
             imageUrl: '',
             fullName: 'Chevy Stevens'
         }],
-        genre: <IGenre[]>[ {
+        genres: <IGenre[]>[ {
             id: 2,
             title: 'Thriller'
+        }, 
+        {
+            id: 4,
+            title: 'Western'
         }],
         publishingHouse: "Sakam Knigi",
         pagesNum: 367,
@@ -99,7 +103,7 @@ export const BOOKS: IBook[] = [
         id: 3,
         title: "И планините одекнаа",
         originalTitle: "And The Mountains Echoed",
-        author: <IAuthor[]> [{
+        authors: <IAuthor[]> [{
             id: 3,
             firstName: 'Khaled',
             lastName: 'Hosseini',
@@ -107,7 +111,7 @@ export const BOOKS: IBook[] = [
             imageUrl: '',
             fullName: 'Khaled Hosseini'
         }],
-        genre: <IGenre[]>[ {
+        genres: <IGenre[]>[ {
             id: 3,
             title: 'Mystery'
         }],

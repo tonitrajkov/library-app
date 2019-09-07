@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IRole } from '../../shared/models/role';
 import { ConfigService } from '../config.service';
 import { RoleModalComponent } from '../roles/role-modal.component';
+import { WarningDialogComponent } from '../../shared/dialogs/warning-dialog.component';
 
 @Component({
     templateUrl: './roles.component.html',
@@ -17,12 +18,18 @@ export class RolesComponent implements OnInit {
         this.loadRoles();
     }
     public deleteRole(role: IRole) {
-        this.configService.deleteRole(role.id)
-        .subscribe(result => {
-            if (result) {
-                this.loadRoles();
-            }
-        })
+        const modalRef = this.modalService.open(WarningDialogComponent, { size: 'sm' });
+        
+                modalRef.result.then((result) => {
+                    if (result == true) {
+                        this.configService.deleteRole(role.id)
+                        .subscribe(result => {
+                            if (result) {
+                                this.loadRoles();
+                            }
+                        });
+                    }
+                });
     }
 
     public updateRole(role: IRole) {

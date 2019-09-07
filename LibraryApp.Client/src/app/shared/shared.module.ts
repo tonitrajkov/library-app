@@ -14,6 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { StarComponent } from './components/star.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { WarningDialogComponent } from '../shared/dialogs/warning-dialog.component';
 
 library.add(fas);
 
@@ -31,7 +32,8 @@ library.add(fas);
   declarations: [
     StarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    WarningDialogComponent
 
   ],
   exports: [
@@ -44,7 +46,11 @@ library.add(fas);
     NgbTabsetModule,
     NgbModalModule,
     NgSelectModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    WarningDialogComponent
+  ],
+  entryComponents: [
+    WarningDialogComponent
   ]
 })
 export class SharedModule { }

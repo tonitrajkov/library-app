@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorModalComponent } from './author-modal.component';
 import { ConfigService } from '../config.service';
 import { IAuthor } from '../../shared/models/author';
+import { WarningDialogComponent } from '../../shared/dialogs/warning-dialog.component';
 
 @Component({
     selector: 'app-authors',
@@ -25,12 +26,19 @@ export class AuthorsComponent implements OnInit {
     }
 
     public deleteAuthor(author: IAuthor) {
-        this.configService.deleteAuthor(author.id)
-            .subscribe(result => {
-                if (result) {
-                    this.loadAuthors();
-                }
-            })
+        const modalRef = this.modalService.open(WarningDialogComponent, { size: 'sm' });
+
+        modalRef.result.then((result) => {
+            if (result == true) {
+                this.configService.deleteAuthor(author.id)
+                .subscribe(result => {
+                    if (result) {
+                        this.loadAuthors();
+                    }
+                });
+            }
+        });
+        
     }
 
     public updateAuthor(author: IAuthor) {
@@ -60,10 +68,10 @@ export class AuthorsComponent implements OnInit {
     }
 
     public getAuthorImage(imageString: any) {
-        if(!!imageString){
-            return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
-            + imageString);
+        if(imageString) {
+            return imageString;
         }
+        return "./assets/images/no-avatar.png"
     }
 
 }

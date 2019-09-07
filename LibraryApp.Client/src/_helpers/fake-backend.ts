@@ -104,8 +104,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         if (book) {
                             book.title = model.title;
                             book.originalTitle = model.originalTitle;
-                            book.author = model.author;
-                            book.genre = model.genre;
+                            book.authors = model.authors;
+                            book.genres = model.genres;
                             book.publishingHouse = model.publishingHouse;
                             book.pagesNum = model.pagesNum;
                             book.rating = model.rating;

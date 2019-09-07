@@ -21,62 +21,59 @@
             <div *ngIf="submitted && originalTitle.invalid" class="invalid-feedback">
                 <div *ngIf="originalTitle.errors.required">Полето е задолжително</div>
             </div>
-         </div>
-         <div class="form-group">
-            <ng-select [items]="author"
-                name="author"
-                bindLabel="fullName"
-                [multiple]="true"
-                placeholder="Избери автор"
-                [(ngModel)]="book.author">
+        </div>
+        <div class="form-group">
+            <ng-select [items]="author" name="author" bindLabel="fullName" [multiple]="true" placeholder="Избери автор" [(ngModel)]="book.authors">
             </ng-select>
-      </div>
-      <div class="form-group">
-        <ng-select [items]="genre"
-            name="genre"
-            bindLabel="title" 
-            [multiple]="true"
-            placeholder="Избери жанр"
-            [(ngModel)]="book.genre">
-        </ng-select>
-  </div>
-                    <div class="form-group">
-                        <label>Издавачка куќа</label>
-                        <input [(ngModel)]="book.publishingHouse" name="publishingHouse" type="text" class="form-control" placeholder="Внеси издавачка куќа"
-                            #publishingHouse="ngModel" [ngClass]="{ 'is-invalid': submitted && publishingHouse.invalid }" required>
-                        <div *ngIf="submitted && publishingHouse.invalid" class="invalid-feedback">
-                            <div *ngIf="publishingHouse.errors.required">Полето е задолжително</div>
-                        </div>
-                    </div>
-                        <div class="form-group">
-                            <label>Број на страници</label>
-                            <input [(ngModel)]="book.pagesNum" name="pagesNum" type="text" class="form-control" placeholder="Внеси број на страници"
-                                #pagesNum="ngModel" [ngClass]="{ 'is-invalid': submitted && pagesNum.invalid }" required>
-                            <div *ngIf="submitted && pagesNum.invalid" class="invalid-feedback">
-                                <div *ngIf="pagesNum.errors.required">Полето е задолжително</div>
-                            </div>
-                        </div>
-                            <div class="form-group">
-                                <label>Рејтинг</label>
-                                <input [(ngModel)]="book.rating" name="rating" type="text" class="form-control" placeholder="Внеси рејтинг"
-                                    #rating="ngModel" [ngClass]="{ 'is-invalid': submitted && rating.invalid }"
-                                    required>
-                                <div *ngIf="submitted && rating.invalid" class="invalid-feedback">
-                                    <div *ngIf="rating.errors.required">Полето е задолжително</div>
-                                </div>
-                            </div>
-                                <div class="form-group">
-                                    <label>Содржина</label>
-                                    <textarea [(ngModel)]="book.description" name="description" class="form-control" placeholder="Внеси содржина" rows="3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Слика од книга</label>
-                                    <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*">
-                                    <div>
-                                        <img *ngIf="bookImgPreview" [src]="bookImgPreview" alt="book picture" style="width:150px; height:150px;">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
-                                    <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
-                                </div>
+        </div>
+        <div class="form-group">
+            <ng-select [items]="genre" name="genre" bindLabel="title" [multiple]="true" placeholder="Избери жанр" [(ngModel)]="book.genres">
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <label>Издавачка куќа</label>
+            <input [(ngModel)]="book.publishingHouse" name="publishingHouse" type="text" class="form-control" placeholder="Внеси издавачка куќа"
+                #publishingHouse="ngModel" [ngClass]="{ 'is-invalid': submitted && publishingHouse.invalid }" required>
+            <div *ngIf="submitted && publishingHouse.invalid" class="invalid-feedback">
+                <div *ngIf="publishingHouse.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Број на страници</label>
+            <input [(ngModel)]="book.pagesNum" name="pagesNum" type="text" class="form-control" placeholder="Внеси број на страници"
+                #pagesNum="ngModel" [ngClass]="{ 'is-invalid': submitted && pagesNum.invalid }" required>
+            <div *ngIf="submitted && pagesNum.invalid" class="invalid-feedback">
+                <div *ngIf="pagesNum.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Рејтинг</label>
+            <input [(ngModel)]="book.rating" name="rating" type="text" class="form-control" placeholder="Внеси рејтинг" #rating="ngModel"
+                [ngClass]="{ 'is-invalid': submitted && rating.invalid }" required>
+            <div *ngIf="submitted && rating.invalid" class="invalid-feedback">
+                <div *ngIf="rating.errors.required">Полето е задолжително</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Содржина</label>
+            <textarea [(ngModel)]="book.description" name="description" class="form-control" placeholder="Внеси содржина" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Слика од книга</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="uploadImg" aria-describedby="uploadImg" (change)="onFileChange($event)"
+                        accept="image/*">
+                    <label class="custom-file-label browse-custom-label" for="uploadImg">Избери слика</label>
+                </div>
+            </div>
+            <div>
+                <img *ngIf="bookImgPreview" [src]="bookImgPreview" alt="book picture" style="width:150px; height:150px;">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirmAction(f.form.valid)">Во ред</button>
+    <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
+</div>

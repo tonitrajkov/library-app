@@ -3,11 +3,13 @@
 
     </div>
     <div class="col-md-6 action-btn-container">
-        <button (click)="addBook()" class="btn action-btn btn-sm">Внеси книга</button>
+        <button (click)="addBook()" class="btn config-action-btn">Нова книга
+            <fa-icon [icon]="['fas', 'plus']" size="sm"></fa-icon>
+        </button>
     </div>
 </div>
 <div class="list-container">
-    <table class='table table-hover'>
+    <table class='table table-hover config-table'>
         <thead>
             <tr>
                 <th>Слика</th>
@@ -16,22 +18,26 @@
                 <th>Жанр</th>
                 <th>Издавачка куќа</th>
                 <th>Број на страници</th>
-                <th>Акции</th>
+                <th class="config-table-action-holder">Акции</th>
             </tr>
         </thead>
         <tr *ngFor="let book of books">
             <td>
                 <!-- <img [src]="getBookImage(book.imageUrl)" alt="book picture" style="width:150px; height:150px;"> -->
-                
+
             </td>
             <td>
                 {{book.title}}
             </td>
             <td>
-                {{book.author}}
+                <span *ngFor="let author of book.authors; let last = last;">
+                    {{author.fullName}} <span *ngIf="!last">, </span>
+                </span>
             </td>
             <td>
-                {{book.genre}}
+                <span *ngFor="let genre of book.genres; let last = last;">
+                    {{genre.title}} <span *ngIf="!last">, </span>
+                </span>
             </td>
             <td>
                 {{book.publishingHouse}}
@@ -39,9 +45,21 @@
             <td>
                 {{book.pagesNum}}
             </td>
-            <td>
-                <a class="table-action-link" (click)="deleteBook(book)">Избриши </a>
-                <a class="table-action-link" (click)="updateBook(book)">Промени </a>
+            <td class='table-actions-container'>
+                <ng-template #actionsContent>
+                    <ul class='popover-actions-menu'>
+                        <li class='popover-actions-item' (click)="updateBook(book); p.close()">
+                            <span> Промени </span>
+                        </li>
+                        <li class='popover-actions-item' (click)="deleteBook(book); p.close()">
+                            <span> Избриши </span>
+                        </li>
+                    </ul>
+                </ng-template>
+                <a class='icon-action' [ngbPopover]="actionsContent" placement="bottom" #p="ngbPopover">
+                    <fa-icon [icon]="['fas', 'ellipsis-v']" [classes]="['my-icon-class']"></fa-icon>
+
+                </a>
             </td>
         </tr>
     </table>
