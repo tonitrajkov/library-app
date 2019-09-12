@@ -9,4 +9,5 @@ export interface IUser {
     isActive: boolean;
     imageUrl: string;
     roles: IRole[];
+    password: string;
 }

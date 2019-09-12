@@ -48,6 +48,9 @@ header .nav-link {
     padding: 0 12px;
     color: #0a1530;
 }
+.login-item {
+    margin-left: 35px;
+}
 
 header .nav-link:hover {
     color: #723182;
@@ -213,33 +216,43 @@ header .la-container {
     color: #484848;
 }
 
-.config-container .tab-container {
+.config-container .tab-container, .profile-container .tab-container {
     margin-top: 20px;
 }
 
-.config-container .tab-container .nav .nav-link.active {
-    color: #EAB22C;
+.tab-container .nav .nav-link.active {
+    color: #EAB22C !important;
     border-bottom: 2px solid #EAB22C;
 }
 
-.config-container .tab-container .nav .nav-link.active a {
+.tab-container .nav .nav-link.active a {
     color: #EAB22C;
     cursor: default;
 }
 
-.config-container .tab-container .nav .nav-link {
+.tab-container .nav .nav-link {
     border: 0;
     cursor: default;
     padding: 0;
 }
 
-.config-container .tab-container .nav .nav-link a {
+.tab-no-routerLink.tab-container .nav .nav-link {
+    padding: .5rem 1rem;
+    color: #723182;
+    cursor: pointer;
+}
+.tab-no-routerLink.tab-container .nav .nav-link:hover {
+    color: #EAB22C;
+}
+
+
+.tab-container .nav .nav-link a {
     color: #723182;
     padding: .5rem 1rem;
     display: block;
 }
 
-.config-container .tab-container .nav .nav-link a:hover {
+.tab-container .nav .nav-link a:hover {
     text-decoration: none;
     color: #EAB22C;
 }
@@ -302,6 +315,17 @@ header .la-container {
     object-fit: cover;
 }
 
+.avatar--small {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+
+.avatar--big {
+    width: 120px;
+    height: 120px;
+}
+
 .details-container {
     flex: 1;
     display: flex;
@@ -339,7 +363,7 @@ header .la-container {
     vertical-align: middle;
 }
 
-.table-actions-container .popover-body {
+.table-actions-container .popover-body, .nav-item .popover-body {
     padding: 0;
     margin: 0;
 }
@@ -412,4 +436,35 @@ header .la-container {
     border: none;
     margin-right: 20px;
     margin-left: 10px;
+}
+
+
+/***** Authenitication Module *****/
+
+.auth-form {
+    padding: 20px 10px;
+}
+
+/***** Profile Module *****/
+
+.profile-content-small {
+    width: 550px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.info-form {
+    flex: 0 0 360px;
+}
+
+.info-avatar-container {
+    flex: 1;
+}
+
+.action-container {
+    text-align: right;
+}
+
+.section-title {
+    padding-bottom: 20px;
 }

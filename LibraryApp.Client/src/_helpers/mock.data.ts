@@ -184,6 +184,30 @@ export const USERS: IUser[] = [
                 title: 'Employee',
                 tag: 'EMPL'
             }
-        ]
+        ],
+        password: '123456'
+    },
+
+    {
+        id: 2,
+        firstName: 'Irena',
+        lastName: 'Ristovska',
+        userName: 'irena.ristovska',
+        email: 'irena_ristovska@email.com',
+        isActive: true,
+        imageUrl: '',
+        roles: [
+            {
+                id: 1,
+                title: 'Administrator',
+                tag: 'ADMIN'
+            },
+            {
+                id: 2,
+                title: 'Employee',
+                tag: 'EMPL'
+            }
+        ],
+        password: '123456'
     }
 ];

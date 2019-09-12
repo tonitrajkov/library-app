@@ -10,6 +10,10 @@ import { IGenre } from '../app/shared/models/genre';
 import { IRole } from '../app/shared/models/role';
 import { IUser } from '../app/shared/models/user';
 import { IBook } from '../app/shared/models/book';
+import { ILogin } from 'src/app/shared/models/login';
+import { ISignup } from 'src/app/shared/models/signup';
+import { retry } from 'rxjs/internal/operators/retry';
+import { IChangePassword } from 'src/app/shared/models/change-password';
 
 
 @Injectable()
@@ -272,6 +276,198 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                             return of(new HttpResponse({ status: 200 }));
                         }
                         break;
+                }
+            }
+
+            //auth login api
+            if (request.url.indexOf('/api/auth/login') !== -1) {
+
+                switch (request.method) {
+
+                    case 'POST':
+                        let loginModel = <ILogin>request.body;
+                        if (!loginModel.userName && !loginModel.password) {
+                            return throwError('Задолжително внесете емаил/корисничко име и лозинка.');
+                        }
+                        if (!loginModel.userName) {
+                            return throwError('Емаил/корисничко име е задолжително.');
+                        }
+
+                        if (!loginModel.password) {
+                            return throwError('Лозинката е задолжителна.');
+                        }
+
+                        let isEmailUsed: boolean = true;
+
+                        if (loginModel.userName.indexOf("@") == -1) {
+                            isEmailUsed = false;
+                        }
+
+                        if (isEmailUsed) {
+                            let filteredUsers = this.users.filter(user => {
+                                return user.email === loginModel.userName
+                            });
+
+                            if (filteredUsers.length > 0) {
+                                let user = filteredUsers[0];
+                                if (user.password === loginModel.password) {
+                                    return of(new HttpResponse({ status: 200, body: user }));
+                                }
+                                return throwError('Внесовте погрешна лозинка.');
+                            }
+
+                            return throwError('Не постои корисник со тој емаил.');
+
+                        }
+
+                        if (!isEmailUsed) {
+                            let filteredUsers = this.users.filter(user => {
+                                return user.userName === loginModel.userName
+                            });
+
+                            if (filteredUsers.length > 0) {
+                                let user = filteredUsers[0];
+                                if (user.password === loginModel.password) {
+                                    return of(new HttpResponse({ status: 200, body: user }));
+                                }
+                                return throwError('Внесовте погрешна лозинка.');
+                            }
+
+                            return throwError('Не постои корисник со тоа корисничко име.');
+                        }
+                }
+            }
+
+            //auth signup api
+            if (request.url.indexOf('/api/auth/signup') !== -1) {
+
+                switch (request.method) {
+
+                    case 'POST':
+                        let signupModel = <ISignup>request.body;
+                        if (!signupModel.firstName && !signupModel.lastName && !signupModel.email &&
+                            !signupModel.userName && !signupModel.password && !signupModel.retypePassword) {
+                            return throwError('Задолжително пополнете ги сите полиња.');
+                        }
+                        if (!signupModel.firstName) {
+                            return throwError('Името е задолжително.');
+                        }
+
+                        if (!signupModel.lastName) {
+                            return throwError('Презимето е задолжително.');
+                        }
+
+                        if (!signupModel.email) {
+                            return throwError('Емаилот е задолжителен.');
+                        }
+
+                        if (!signupModel.userName) {
+                            return throwError('Корисничкото име е задолжително.');
+                        }
+
+                        if (!signupModel.password) {
+                            return throwError('Лозинката е задолжителна.');
+                        }
+
+                        if (!signupModel.retypePassword) {
+                            return throwError('Потврдата на лозинката е задолжителна.');
+                        }
+
+                        let filteredUsersByEmail = this.users.filter(user => {
+                            return user.email === signupModel.email
+                        });
+
+                        if (filteredUsersByEmail.length > 0) {
+                            return throwError('Веќе постои корисник со тој емаил.');
+                        }
+
+                        let filteredUsersByUserName = this.users.filter(user => {
+                            return user.userName === signupModel.userName
+                        });
+
+                        if (filteredUsersByUserName.length > 0) {
+                            return throwError('Веќе постои корисник со тоа корисничко име.');
+                        }
+
+                        if (signupModel.password.length < 6) {
+                            return throwError('Лозинката мора да биде подолга од 6 карактери.');
+                        }
+
+                        if (signupModel.password !== signupModel.retypePassword) {
+                            return throwError('Лозинките не се совпаѓаат.');
+                        }
+
+                        let userId = this.generateId(this.users.map(user => user.id));
+                        let user: IUser = {} as IUser;
+                        user.id = userId;
+                        user.firstName = signupModel.firstName;
+                        user.lastName = signupModel.lastName;
+                        user.email = signupModel.email;
+                        user.userName = signupModel.userName;
+                        user.imageUrl = '';
+                        user.isActive = true;
+                        user.roles = [{
+                            id: 1,
+                            title: 'Reader',
+                            tag: 'READ'
+                        }];
+                        user.password = signupModel.password;
+                        this.users.push(user);
+                        return of(new HttpResponse({ status: 200, body: user }));
+                }
+            }
+
+            //auth changepassword api
+            if (request.url.indexOf('/api/auth/changepassword') !== -1) {
+
+                switch (request.method) {
+
+                    case 'POST':
+                        let model = <IChangePassword>request.body;
+                        if(!model.userId) {
+                            return throwError('Невалидни податоци.');
+                        }
+
+                        if (!model.oldPassword && !model.newPassword && !model.retypePassword) {
+                            return throwError('Задолжително пополнете ги полињата.');
+                        }
+
+                        if (!model.oldPassword) {
+                            return throwError('Старата лозинка е задолжителна.');
+                        }
+
+                        if (!model.newPassword) {
+                            return throwError('Новата лозинка е задолжителна.');
+                        }
+
+                        if (!model.retypePassword) {
+                            return throwError('Потврдата на лозинката е задолжителна.');
+                        }
+
+                        if (model.newPassword.length < 6) {
+                            return throwError('Новата лозинка мора да биде подолга од 6 карактери.');
+                        }
+
+                        if (model.newPassword !== model.retypePassword) {
+                            return throwError('Лозинките не се совпаѓаат.');
+                        }
+
+                        let filteredUsers = this.users.filter(user => {
+                            return user.id === model.userId;
+                        });
+                        
+                        if(filteredUsers.length === 0) {
+                            return throwError('Корисникот не постои.');
+                        }
+                      
+                        let user = filteredUsers[0];
+                        if(user.password !== model.oldPassword) {
+                            return throwError ('Внесовте погрешна стара лозинка.');
+                        }
+
+                        user.password = model.newPassword;
+                        return of(new HttpResponse({ status: 200, body: true }));
+
                 }
             }
 

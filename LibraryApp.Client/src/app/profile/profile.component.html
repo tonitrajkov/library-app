@@ -1,0 +1,26 @@
+<div class='la-container profile-container'>
+    <div class="tab-container">
+        <ngb-tabset>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['personal']">Лични податоци</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['mybooks']">Мои книги</a>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle routerLinkActive="active">
+                    <a [routerLink]="['settings']">Подесувања</a>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
+    <div class="profile-page">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
