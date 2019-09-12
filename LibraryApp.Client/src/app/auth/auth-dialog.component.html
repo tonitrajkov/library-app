@@ -1,0 +1,103 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{dialogTitle}}</h4>
+    <button type="button" class="close" aria-label="Затвори" (click)="cancelAction()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body tab-container tab-no-routerLink">
+    <ngb-tabset #tabs="ngbTabset" (tabChange)="beforeTabChange($event)">
+        <ngb-tab id="login-tab" title="Најава">
+            <ng-template ngbTabContent>
+                <form class='auth-form' name="form" #lf="ngForm" novalidate>
+                    <div class="form-group">
+                        <label>Емаил или корисничко име</label>
+                        <input [(ngModel)]="loginModel.userName" name="userName" type="text" class="form-control" placeholder="Пр. pero@primer.com или pero"
+                            #userName="ngModel" [ngClass]="{ 'is-invalid': submittedLogin && userName.invalid }" required>
+                        <div *ngIf="submittedLogin && userName.invalid" class="invalid-feedback">
+                            <div *ngIf="userName.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Лозинка</label>
+                        <input [(ngModel)]="loginModel.password" name="password" type="password" class="form-control" placeholder="Пр. ********"
+                            #password="ngModel" [ngClass]="{ 'is-invalid': submittedLogin && password.invalid }" required>
+                        <div *ngIf="submittedLogin && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div *ngIf="loginFormErrorMsg" class="alert alert-danger">
+                            <div>{{loginFormErrorMsg}}</div>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab id="signup-tab" title="Креирање профил">
+            <ng-template ngbTabContent>
+                <form class='auth-form' name="form" #su="ngForm" novalidate>
+                    <div class="form-group">
+                        <label>Име</label>
+                        <input [(ngModel)]="signupModel.firstName" name="firstName" type="text" class="form-control" placeholder="Пр. Перо" #firstName="ngModel"
+                            [ngClass]="{ 'is-invalid': submittedSignup && firstName.invalid }" required>
+                        <div *ngIf="submittedSignup && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Презиме</label>
+                        <input [(ngModel)]="signupModel.lastName" name="lastName" type="text" class="form-control" placeholder="Пр. Перовски" #lastName="ngModel"
+                            [ngClass]="{ 'is-invalid': submittedSignup && lastName.invalid }" required>
+                        <div *ngIf="submittedSignup && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Емаил</label>
+                        <input [(ngModel)]="signupModel.email" name="email" type="email" class="form-control" placeholder="Пр. pero.perovski@primer.com"
+                            #email="ngModel" [ngClass]="{ 'is-invalid': submittedSignup && email.invalid }" required>
+                        <div *ngIf="submittedSignup && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Корисничко име</label>
+                        <input [(ngModel)]="signupModel.userName" name="signupUserName" type="text" class="form-control" placeholder="Пр. pero.perovski"
+                            #signupUserName="ngModel" [ngClass]="{ 'is-invalid': submittedSignup && signupUserName.invalid }"
+                            required>
+                        <div *ngIf="submittedSignup && signupUserName.invalid" class="invalid-feedback">
+                            <div *ngIf="signupUserName.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Лозинка</label>
+                        <input [(ngModel)]="signupModel.password" name="signupPassword" type="password" class="form-control" placeholder="Пр. ********"
+                            #signupPassword="ngModel" [ngClass]="{ 'is-invalid': submittedSignup && signupPassword.invalid }"
+                            required>
+                        <div *ngIf="submittedSignup && signupPassword.invalid" class="invalid-feedback">
+                            <div *ngIf="signupPassword.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Потврди лозинка</label>
+                        <input [(ngModel)]="signupModel.retypePassword" name="retypePassword" type="password" class="form-control" placeholder="Пр. ********"
+                            #retypePassword="ngModel" [ngClass]="{ 'is-invalid': submittedSignup && retypePassword.invalid }"
+                            required>
+                        <div *ngIf="submittedSignup && retypePassword.invalid" class="invalid-feedback">
+                            <div *ngIf="retypePassword.errors.required">Полето е задолжително</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <div *ngIf="signupFormErrorMsg" class="alert alert-danger">
+                                <div>{{signupFormErrorMsg}}</div>
+                            </div>
+                        </div>
+                </form>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="confirmAction()">{{submitBtnTitle}}</button>
+    <button type="button" class="btn btn-light" (click)="cancelAction()">Откажи</button>
+</div>

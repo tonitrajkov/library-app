@@ -15,6 +15,7 @@ import { StarComponent } from './components/star.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WarningDialogComponent } from '../shared/dialogs/warning-dialog.component';
+import { PubSubService } from './pubsub.service';
 
 library.add(fas);
 
@@ -51,6 +52,9 @@ library.add(fas);
   ],
   entryComponents: [
     WarningDialogComponent
+  ],
+  providers: [
+    PubSubService
   ]
 })
 export class SharedModule { }

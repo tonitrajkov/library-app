@@ -67,6 +67,5 @@ export class UsersComponent implements OnInit {
             return imageString;
         }
         return "./assets/images/no-avatar.png"
-        
     }
 }
