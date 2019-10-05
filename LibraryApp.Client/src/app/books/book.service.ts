@@ -25,8 +25,12 @@ export class BookService {
         );
     }
 
-    loadBooks(): Observable<IBook[]> {
-        return this.http.get<IBook[]>(`${this.apiUrl}/book`);
+    // loadBooks(): Observable<IBook[]> {
+    //     return this.http.get<IBook[]>(`${this.apiUrl}/book`);
+    // }
+
+    public loadBooks(): Observable<IBook[]> {
+        return this.http.get<IBook[]>(`${this.apiUrl}/configuration/book`);
     }
 
     getBook(bookId: string): Observable<IBook> {

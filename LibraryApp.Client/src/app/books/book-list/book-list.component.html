@@ -1,53 +1,48 @@
-<div class='card'>
-    <div class='card-header'>
-        Книги
-    </div>
-    <div class='card-body'>
-        <div class='row'>
-            <div class='col-md-2'>Пребарувај</div>
-            <div class='col-md-4'>
-                <input type='text' [(ngModel)]='listFilter' />
+<div class="la-container config-container">
+    <div class="content">
+        <div style="margin-top: 30px" class="filter-container row">
+            <div class="col-md-6 filter-container">
+                Пребарај по наслов: <input type='text' [(ngModel)]='listFilter' />
             </div>
         </div>
+        <div class="list-container">
+            <table class='table table-hover config-table'>
+                <thead>
+                    <tr>
+                        <th>Слика</th>
+                        <th>Наслов</th>
+                        <th>Автор</th>
+                        <th>Жанр</th>
+                        <th>Издавачка куќа</th>
+                        <th>Број на страници</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let book of filteredBooks">
+                    <td>
+                        <img [src]="book.imageUrl" alt="book picture" style="height:150px;">
 
-
-        <div class='table' *ngIf='books && books.length'>
-            <thead class="table-head">
-                <tr>
-                    <th>
-                        <button class='btn btn-primary' (click)='toggleImage()'>
-                            {{showImage ? 'Сокриј' : 'Прикажи'}} слика
-                        </button>
-                    </th>
-                    <th class="th">Наслов на книга</th>
-                    <th class="th">Автор</th>
-                    <th class="th">Жанр</th>
-                    <th class="th">Издавачка куќа</th>
-                    <th class="th">Број на страници</th>
-                    <th class="th">Рејтинг</th>
+                    </td>
+                    <td>
+                        {{book.title}}
+                    </td>
+                    <td>
+                        <span *ngFor="let author of book.authors; let last = last;">
+                            {{author.fullName}} <span *ngIf="!last">, </span>
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let genre of book.genres; let last = last;">
+                            {{genre.title}} <span *ngIf="!last">, </span>
+                        </span>
+                    </td>
+                    <td>
+                        {{book.publishingHouse}}
+                    </td>
+                    <td>
+                        {{book.pagesNum}}
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor='let book of filteredBooks'>
-                    <td>
-                        <img *ngIf='showImage' [src]='book.imageUrl' [title]='book.originalTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
-                    </td>
-                    <td>
-                        <a [routerLink]="['/books', book.id]">
-                            {{ book.originalTitle }}
-                        </a>
-                    </td>
-                    <td>{{ book.author }}</td>
-                    <td>{{ book.genre }}</td>
-                    <td>{{ book.publishingHouse }}</td>
-                    <td>{{ book.pagesNum }}</td>
-                    <td>
-                        <app-star [rating]='book.rating' (ratingClicked)='onRatingClicked($event)'></app-star>
-                    </td>
-
-                </tr>
-            </tbody>
+            </table>
         </div>
     </div>
-
 </div>

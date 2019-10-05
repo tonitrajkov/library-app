@@ -47,7 +47,7 @@ import { AdminUserGuard } from './shared/guards/admin-user.guard';
       },
       { path: 'config', canActivate: [AdminUserGuard], loadChildren: './config/config.module#ConfigModule' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-    ]),
+    ], { scrollPositionRestoration: 'enabled', useHash: true }),
     BookModule,
     SharedModule
   ],

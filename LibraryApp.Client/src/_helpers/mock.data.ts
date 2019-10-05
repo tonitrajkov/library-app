@@ -9,43 +9,43 @@ import { IBook } from '../app/shared/models/book';
 export const AUTHORS: IAuthor[] = [
     {
         id: 1,
-        firstName: 'Kristin',
-        lastName: 'Hannah',
-        biography: 'Kristin`s bio',
-        imageUrl: '',
-        fullName: 'Kristin Hannah'
+        firstName: 'Кристин',
+        lastName: 'Хана',
+        biography: 'Кристин Хана е една од најпродаваните американски писатели која има освоено бројни награди, вкулучувајќи ја наградата Golden Heart, the Maggie и 1996 National Reader’s Choice award. ',
+        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/kristin-hannah4.png',
+        fullName: 'Кристин Хана'
     },
     {
         id: 2,
-        firstName: 'Chevy',
-        lastName: 'Stevens',
-        biography: 'Stevens biography it is not available',
-        imageUrl: '',
-        fullName: 'Chevy Stevens'
+        firstName: 'Шеви',
+        lastName: 'Ствивенс',
+        biography: 'Шеви Стивенс е автор на трилери од Канада. Таа живее во Ванкувер Ајленд, Британска Колумбија. Кога ја добила идејата за нејзиниот прв трилер „Исчезната без трага“ таа и самата била агент за недвижнини како и главниот лик од приказната.  Тој трилер беше бестселер на Њујорк Тајмс.',
+        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/Chevy_Stevens_3494-345x349.jpg',
+        fullName: 'Шеви Стивенс'
     },
     {
         id: 3,
-        firstName: 'Khaled',
-        lastName: 'Hosseini',
-        biography: '',
-        imageUrl: '',
-        fullName: 'Khaled Hosseini'
+        firstName: 'Даниел',
+        lastName: 'Грант',
+        biography: 'Роден во Сент Албанс, Англија, учел англиски јазик и  политички студии. Работел како асистент за Newsdesk ITN, потоа за BBC, а сега работи како продуцент на телевизиски вести во Лондон. Живее во Годалминг во Сари со сопругата Алисон и нивниот црн лабрадор, Диги. Обожава да пишува, да пие вино и да патува.',
+        imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/110966_ad82d8f9b0c19e2ff21471a16a0ba9e4.jpg_srz_267_251_85_22_0.50_1.20_0.00.jpg',
+        fullName: 'Даниел Грант'
     },
     {
         id: 4,
-        firstName: 'Sarah',
-        lastName: 'Gio',
-        biography: 'Sarah Gio is author of 8 best sellers',
+        firstName: 'Сара',
+        lastName: 'Џио',
+        biography: 'Сара Џио е автор на 8 бестселери според Њујорк Тајмс и USA Today. Таа воедно е новинарка која има пишувано за Glamour, The New York Times, Redbook, O: The Oprah Magazine. Живее во Сиетл со трите мали синчиња.',
         imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2017/10/sarah-sidebar2-345x425.png',
-        fullName: 'Sarah Gio'
+        fullName: 'Сара Џио'
     },
     {
         id: 5,
-        firstName: 'Jonh',
-        lastName: 'Green',
-        biography: '',
+        firstName: 'Јон',
+        lastName: 'Грин',
+        biography: 'Џон Грин е американски автор, видео блогер, писател, продуцент, актер и уредник. Тој е бр.1 најпродаван автор на Њујорк Тајмс за „Во потрага по Алјаска“, „Светот не е фабрика за исполнување желби“ и др',
         imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/john-green-2.jpg',
-        fullName: 'John Green'
+        fullName: 'Јон Грин'
     }
 ];
 
@@ -57,20 +57,20 @@ export const BOOKS: IBook[] = [
         originalTitle: "The Nightingale",
         authors: <IAuthor[]> [{
             id: 1,
-            firstName: 'Kristin',
-            lastName: 'Hannah',
-            biography: 'Kristin`s bio',
-            imageUrl: '',
-            fullName: 'Kristin Hannah'
+            firstName: 'Кристин',
+            lastName: 'Хана',
+            biography: 'Кристин Хана е една од најпродаваните американски писатели која има освоено бројни награди, вкулучувајќи ја наградата Golden Heart, the Maggie и 1996 National Reader’s Choice award. ',
+            imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/kristin-hannah4.png',
+            fullName: 'Кристин Хана'
         }],
         genres: <IGenre[]>[{
             id: 1,
-             title: 'Romance'
+             title: 'Романса'
         }],
-        publishingHouse: "Sakam Knigi",
+        publishingHouse: "Сакам Книги",
         pagesNum: 415,
         rating: 4.56,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description: "Во тивко француско село, кротката и плашлива Вијан Моријак се збогува со својот сопруг, кој оди да војува. Таа не верува дека Германците ќе ја окупираат Франција, но тоа сепак се случува и ја принудува да прими непријател во сопствениот дом. Во ова време на војни, Вијан мора да научи да биде храбра. Храбра како сестра ѝ.",
         imageUrl: "http://sakamknigi.mk/wp-content/uploads/2015/09/11.jpg"
     },
     {
@@ -79,24 +79,24 @@ export const BOOKS: IBook[] = [
         originalTitle: "Never Knowing",
         authors: <IAuthor[]> [{
             id: 2,
-            firstName: 'Chevy',
-            lastName: 'Stevens',
-            biography: 'Stevens biography it is not available',
-            imageUrl: '',
-            fullName: 'Chevy Stevens'
+            firstName: 'Шеви',
+            lastName: 'Ствивенс',
+            biography: 'Шеви Стивенс е автор на трилери од Канада. Таа живее во Ванкувер Ајленд, Британска Колумбија. Кога ја добила идејата за нејзиниот прв трилер „Исчезната без трага“ таа и самата била агент за недвижнини како и главниот лик од приказната.  Тој трилер беше бестселер на Њујорк Тајмс.',
+            imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/Chevy_Stevens_3494-345x349.jpg',
+            fullName: 'Шеви Стивенс'
         }],
         genres: <IGenre[]>[ {
             id: 2,
-            title: 'Thriller'
+            title: 'Трилер'
         }, 
         {
             id: 4,
-            title: 'Western'
+            title: 'Вестерн'
         }],
-        publishingHouse: "Sakam Knigi",
+        publishingHouse: "Сакам Книги",
         pagesNum: 367,
         rating: 3.86,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description: "На триесет и три години, Сара Галагер конечно е среќна. Нејзиниот бизнис за реставрација на мебел цвета и верена е со прекрасен човек. Но има едно големо прашање што сe уште ја прогонува – кои се нејзините биолошки родители? Сара конечно е подготвена да дознае, бидејќи одамна знае дека е посвоена и копнее да дознае нешто повеќе за вистинските родители.",
         imageUrl: "http://www.kniga.mk/media/catalog/product/cache/3/image/265x265/17f82f742ffe127f42dca9de82fb58b1/n/i/nikogas_ne_se_znae.jpg"
     },
     {
@@ -105,20 +105,20 @@ export const BOOKS: IBook[] = [
         originalTitle: "And The Mountains Echoed",
         authors: <IAuthor[]> [{
             id: 3,
-            firstName: 'Khaled',
-            lastName: 'Hosseini',
-            biography: '',
-            imageUrl: '',
-            fullName: 'Khaled Hosseini'
+            firstName: 'Даниел',
+            lastName: 'Грант',
+            biography: 'Роден во Сент Албанс, Англија, учел англиски јазик и  политички студии. Работел како асистент за Newsdesk ITN, потоа за BBC, а сега работи како продуцент на телевизиски вести во Лондон. Живее во Годалминг во Сари со сопругата Алисон и нивниот црн лабрадор, Диги. Обожава да пишува, да пие вино и да патува.',
+            imageUrl: 'http://sakamknigi.mk/wp-content/uploads/2015/08/110966_ad82d8f9b0c19e2ff21471a16a0ba9e4.jpg_srz_267_251_85_22_0.50_1.20_0.00.jpg',
+            fullName: 'Даниел Грант'
         }],
         genres: <IGenre[]>[ {
             id: 3,
-            title: 'Mystery'
+            title: 'Мистерија'
         }],
-        publishingHouse: "Matica",
+        publishingHouse: "Матица",
         pagesNum: 393,
         rating: 4.04,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description: "Сите кои го познаваат Џејмс Кенеди сметаат дека животот не можел да му подели подобри карти. Тој е згоден, паметен, млад, има одлично платена работа како банкар во центарот на Лондон, живее во огромен модерен стан во скапиот дел од градот, ги менува девојките како чорапи, има група фини пријатели… Навидум, тој навистина има совршен живот.",
         imageUrl: "http://sakamknigi.mk/portal/media/k2/items/cache/a4e782ff58c2efaa0c9218e717493fa6_S.jpg?t=-62169984000"
     },
     
@@ -128,19 +128,19 @@ export const BOOKS: IBook[] = [
 export const GENRES: IGenre[] = [
     {
         id: 1,
-        title: 'Romance'
+        title: 'Романса'
     },
     {
         id: 2,
-        title: 'Thriller'
+        title: 'Трилер'
     },
     {
         id: 3,
-        title: 'Mystery'
+        title: 'Мистерија'
     },
     {
         id: 4,
-        title: 'Western'
+        title: 'Вестерн'
     }
 ];
 
@@ -148,17 +148,17 @@ export const GENRES: IGenre[] = [
 export const ROLES: IRole[] = [
     {
         id: 1,
-        title: 'Administrator',
+        title: 'Администратор',
         tag: 'ADMIN'
     },
     {
         id: 2,
-        title: 'Employee',
+        title: 'Вработен',
         tag: 'EMPL'
     },
     {
         id: 1,
-        title: 'Reader',
+        title: 'Надворешен корисник',
         tag: 'READ'
     }
 ];
@@ -167,31 +167,31 @@ export const ROLES: IRole[] = [
 export const USERS: IUser[] = [
     {
         id: 1,
-        firstName: 'Toni',
-        lastName: 'Trajkov',
-        userName: 'toni.trajkov',
-        email: 'toni.trajkov@email.com',
+        firstName: 'Администратор',
+        lastName: '',
+        userName: 'admin',
+        email: 'admin@email.com',
         isActive: true,
         imageUrl: '',
         roles: [
             {
                 id: 1,
-                title: 'Administrator',
+                title: 'Администратор',
                 tag: 'ADMIN'
             },
             {
                 id: 2,
-                title: 'Employee',
+                title: 'Вработен',
                 tag: 'EMPL'
             }
         ],
-        password: '123456'
+        password: 'admin'
     },
 
     {
         id: 2,
-        firstName: 'Irena',
-        lastName: 'Ristovska',
+        firstName: 'Ирена',
+        lastName: 'Ристовска',
         userName: 'irena.ristovska',
         email: 'irena_ristovska@email.com',
         isActive: true,
@@ -199,12 +199,12 @@ export const USERS: IUser[] = [
         roles: [
             {
                 id: 1,
-                title: 'Administrator',
+                title: 'Администратор',
                 tag: 'ADMIN'
             },
             {
                 id: 2,
-                title: 'Employee',
+                title: 'Вработен',
                 tag: 'EMPL'
             }
         ],

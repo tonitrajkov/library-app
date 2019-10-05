@@ -32,11 +32,11 @@ export class AuthService {
 
     public getLoggedUser(): IUser {
         let localStorageItem = localStorage.getItem("loggedUser");
-        if (localStorage) {
+        if (localStorageItem) {
             return <IUser>JSON.parse(localStorageItem);
         }
 
-        return {} as IUser;
+        return null;
     }
 
     public logout() {
@@ -45,7 +45,7 @@ export class AuthService {
 
     public isAdmin(): boolean {
         let user = this.getLoggedUser();
-        if (user.id) {
+        if (user) {
 
             if (!user.roles || user.roles.length === 0) {
                 return false;

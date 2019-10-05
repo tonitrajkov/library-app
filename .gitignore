@@ -187,6 +187,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+dist/
 orleans.codegen.cs
 
 # RIA/Silverlight projects
@@ -241,5 +242,3 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/Data/Nextsense.SDP.Database/Nextsense.SDP.Database.jfm
-SDP.sln.orig

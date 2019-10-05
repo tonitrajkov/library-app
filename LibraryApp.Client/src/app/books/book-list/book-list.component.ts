@@ -39,17 +39,17 @@ export class BookListComponent implements OnInit {
     performFilter(filterBy: string): IBook[] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.books.filter((book: IBook) =>
-            book.originalTitle.toLocaleLowerCase().indexOf(filterBy) !== -1);
+            book.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
 
-    loadBooks() {
+    public loadBooks() {
         this.bookService.loadBooks()
-            .subscribe(books => {
-                this.books = books;
+            .subscribe(result => {
+                this.books = result;
                 this.filteredBooks = this.books;
             });
     }

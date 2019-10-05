@@ -23,8 +23,7 @@
         </thead>
         <tr *ngFor="let book of books">
             <td>
-                <!-- <img [src]="getBookImage(book.imageUrl)" alt="book picture" style="width:150px; height:150px;"> -->
-
+                <img [src]="book.imageUrl" alt="book picture" style="height:150px;">
             </td>
             <td>
                 {{book.title}}
